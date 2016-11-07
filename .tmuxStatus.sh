@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+# first arguments define what we want
+what=$1
+
+function ilmn () {
+  ilmnFull=$(curl -s \
+    'http://download.finance.yahoo.com/d/quotes.csv?s=ilmn&f=pol1')
+  latest=`perl -e '$x=shift;@F=split(/,/, $x); printf("%.1f",$F[2])' $ilmnFull`
+  echo $latest
+}
+
+
+function sgeUsage(){
+  which qstat &> /dev/null
+  if [ $? == 0 ]; then
+    USER_RUNNING_JOBS=`qstat -u $USER | tail -n+3 | grep -w 'r' | wc -l`
+    USER_QUEUING_JOBS=`qstat -u $USER | tail -n+3 | grep -w 'qw' | wc -l`
+    ALL_RUNNING_JOBS=`qstat -u '*' | tail -n+3 | grep -w 'r' | wc -l`
+    ALL_QUEUING_JOBS=`qstat -u '*' | tail -n+3 | grep -w 'qw' | wc -l`
+    
+    USER_INFO="${USER_RUNNING_JOBS}/${USER_QUEUING_JOBS}"
+    ALL_INFO="${ALL_RUNNING_JOBS}/${ALL_QUEUING_JOBS}"
+    echo "U:${USER_INFO}, A:${ALL_INFO}"
+  else
+    echo "U:NA, A:NA"
+  fi
+
+}
+
+case $what in
+    queue)
+    # print out usage
+    sgeUsage
+    exit 0
+    ;;
+    ilmn)
+    # print out usage
+    ilmn
+    exit 0
+    ;;
+    altroValore)
+    echo "AV"
+    shift # past argument
+    exit 0
+    ;;
+    *)
+    # unknown option
+    echo "U"
+    exit 1
+    ;;
+esac
+
