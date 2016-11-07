@@ -4,6 +4,7 @@ set -e
 # defaults
 force=0
 
+
 # built in variables
 files2sync="
   .bashrc 
@@ -72,6 +73,15 @@ function report_existing(){
   done
 }
 
+function create_symlinks(){
+  for f in "$@"; do
+    TARGET=$HOME/$f
+    if [ -e $TARGET ]; then
+      rm $TARGET
+    fi
+    ln -s -t $HOME $PWD/$f
+  done
+}
 
 ## MAIN ##
 
@@ -79,6 +89,7 @@ parse_args "$@"
 any_exists $files2sync # set variable $exists
 if [ "$exists" == "0" -o "$force" == "1" ]; then
   echo "going to make links"
+  create_symlinks $files2sync
 else
   report_existing $files2sync
   echo "use --force to override"
