@@ -5,38 +5,8 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-# User specific aliases and functions
-#
-
-# some convenient variables to hosts
-
-# prepend useful paths
-# /bin in my home
-PATH=${HOME}/bin:$PATH
-
-# append extra path
-# node.js modules installed in the current directory
-PATH=${HOME}/bin:$PATH:./node_modules/.bin 
-
-# Eternal history (it is not working)
-# as in https://www.debian-administration.org/article/543/Bash_eternal_history
-export HISTTIMEFORMAT="%s "
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $USER \
-               "$(history 1)" >> ~/.bash_eternal_history'
-
-
-
 
 # ALIASES
-# colorful ls
-alias ls="ls --color=auto"
-
-# change dark blue to light blue for directories
-LS_COLORS="$LS_COLORS:di=00;36"
-
-# platform independent
-alias l="ls -lrt"
-alias tree="tree -C"
 
 # set function to fetch git branch
 __git_ps1 ()

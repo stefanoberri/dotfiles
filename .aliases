@@ -1,0 +1,26 @@
+# all aliases are collected here
+
+# see https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
+# Simplified.
+# Detect which `ls` flavor is in use
+if ls --color > /dev/null 2>&1; then # GNU `ls`
+  colorflag="--color"
+  # change dark blue to light blue for directories
+  export LS_COLORS="$LS_COLORS:di=00;36"
+else # macOS `ls`
+  colorflag="-G"
+  export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
+fi
+
+# colorful ls
+alias ls="ls ${colorflag}=auto"
+alias l="ls -lrt"
+alias la="ls -aF"
+alias tree="tree -C"
+
+# Always enable colored `grep` output
+# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
