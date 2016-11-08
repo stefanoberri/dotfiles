@@ -5,20 +5,11 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-
-# ALIASES
-
-# set function to fetch git branch
-__git_ps1 ()
-{
-    local b="$(git symbolic-ref HEAD 2>/dev/null)";
-    if [ -n "$b" ]; then
-        printf " +%s" "${b##refs/heads/}";
-    fi
-}
+function sourceit(){ [ -r "$1" ] && [ -f "$1" ] && source "$1"; }
 
 
 # change the prompt text and color: some examples
+sourceit .bash_prompt
 
 # light blue / cyan shows [mac: DIR]$
 # export PS1="\[\e[36m\][mac: \W]\$ \[\e[0m\]"
@@ -29,7 +20,7 @@ __git_ps1 ()
 
 # green 
 # the prompt shows [DIR +gitBranch]$ where +gitbranch is in white
-export PS1="\[\e[32m\][\W\[\e[37m\]\$(__git_ps1)\[\e[32m\]]\$ \[\e[0m\]"
+# export PS1="\[\e[32m\][\W\[\e[37m\]\$(__git_ps1)\[\e[32m\]]\$ \[\e[0m\]"
 # red, shows [user@hostname DIR]$
 # export PS1="\[\e[31m\][\u@\h \W]\$ \[\e[0m\]"
 # red, shows [DIR]$ 

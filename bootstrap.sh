@@ -7,8 +7,11 @@ force=0
 
 # built in variables
 files2sync="
+  .functions
+  .name
   .bashrc 
   .bash_profile
+  .bash_prompt
   .aliases
   .profile
   .inputrc 
