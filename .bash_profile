@@ -6,5 +6,8 @@ function sourceit(){ [ -r "$1" ] && [ -f "$1" ] && source "$1"; }
 # if there is a more "generic" .profile file, source it
 sourceit $HOME/.profile
 
+# if it is an interactive shell, source ~/.bashrc
+case "$-" in *i*) sourceit $HOME/.bashrc ;; esac
+
 # User specific environment and startup programs
 export PATH="$HOME/bin:$PATH";
