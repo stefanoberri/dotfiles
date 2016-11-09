@@ -77,6 +77,14 @@ set omnifunc=syntaxcomplete#Complete
 
 " if not present, add plugin from 
 " https://github.com/fholgado/minibufexpl.vim
+map <F2>n :MBEbn<CR>
+map <F2>p :MBEbp<CR>
+map <F2>f :MBEbf<CR>
+map <F2>b :MBEbb<CR>
+map \| :vsplit<CR>
+map _ :split<CR>
+
+
 
 
 "" COMMENTING in a few languages (highlight in visual mode and then type the
