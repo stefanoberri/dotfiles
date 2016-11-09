@@ -1,7 +1,0 @@
-# This file contains a variable number of commented lines and ONE line with a
-# single word that can be used to detect "where" we are and personalise
-# environment accordingly (i.e. PS1). Usually for things that cannot be
-# automated, but rather depend on preferences. For instace, it could be that at
-# work I want a very simple tmux status bar, but at home I don't mind one that
-# reports more mundane stats.
-chuk-isilon
