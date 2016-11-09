@@ -15,6 +15,7 @@ files2sync="
   .aliases
   .profile
   .inputrc 
+  .extrarc
   .tmux.conf 
   .tmuxStatus.sh
   .vimrc

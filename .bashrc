@@ -1,3 +1,7 @@
+# This contains instructions for bash. They are mostly customisations of look
+# and feel. System wide configurations (exports, modules and so on) should go
+# in ~/.bash_profile
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
@@ -11,6 +15,8 @@ sourceit $HOME/.aliases
 sourceit $HOME/.bash_prompt
 # source useful functions
 sourceit $HOME/.functions
+# host specific settings
+sourceit $HOME/.extrarc
 # export LANG=en_US.UTF-8
 
 # to use "magic" history (letters+urrow up find last commands in history
