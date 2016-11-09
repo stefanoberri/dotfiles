@@ -85,7 +85,6 @@ function create_symlinks(){
   for f in "$@"; do
     TARGET=$HOME/$f
     SOURCE=$PWD/$f
-    echo "TARGET=$HOME/$f, SOURCE=$PWD/$f"
     if [ -e $SOURCE ]; then
       if [ -e $TARGET ]; then
         rm $TARGET
