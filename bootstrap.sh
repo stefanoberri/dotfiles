@@ -19,6 +19,7 @@ files2sync="
   .tmux.conf 
   .tmuxStatus.sh
   .vimrc
+  bin/tmuxStatus
   "
 
 function usage(){
@@ -84,11 +85,13 @@ function create_symlinks(){
   for f in "$@"; do
     TARGET=$HOME/$f
     SOURCE=$PWD/$f
+    echo "TARGET=$HOME/$f, SOURCE=$PWD/$f"
     if [ -e $SOURCE ]; then
       if [ -e $TARGET ]; then
         rm $TARGET
       fi
-      ln -s -t $HOME $SOURCE
+      TARGETDIR=$(dirname $TARGET)
+      ln -s -t $TARGETDIR $SOURCE
     fi
   done
 }
@@ -96,6 +99,9 @@ function create_symlinks(){
 ## MAIN ##
 
 parse_args "$@" 
+if [ ! -d $HOME/bin ]; then
+  mkdir $HOME/bin 
+fi
 any_exists $files2sync # set variable $exists
 if [ "$exists" == "0" -o "$force" == "1" ]; then
   create_symlinks $files2sync
