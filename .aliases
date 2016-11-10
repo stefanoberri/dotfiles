@@ -13,7 +13,7 @@ else # macOS `ls`
 fi
 
 # colorful ls
-alias ls="ls ${colorflag}=auto"
+alias ls="ls ${colorflag}"
 alias l="ls -lrt"
 alias la="ls -aF"
 alias tree="tree -C"
