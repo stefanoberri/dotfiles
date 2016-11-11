@@ -59,6 +59,6 @@ PS1="\[${color}\]"; # set starting color
 PS1+="[\w"; # working directory
 PS1+="\[${white}\]\$(__git_ps1)"; # white git branch
 PS1+="\[${color}\]]"; # close bracket same color
-PS1+="\n\$${reset} "; # newline, $, space and reset color
+PS1+="\n\$\[${reset}\] "; # newline, $, space and reset color
 
 export PS1;
