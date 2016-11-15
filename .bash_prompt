@@ -14,7 +14,7 @@ fi
 
 # see https://github.com/mathiasbynens/dotfiles/blob/master/.bash_prompt
 bold='';
-reset="\e[0m";
+reset="\e[m";
 black="\e[1;30m";
 blue="\e[1;34m";
 cyan="\e[1;36m";
@@ -25,6 +25,8 @@ red="\e[1;31m";
 violet="\e[1;35m";
 white="\e[1;37m";
 yellow="\e[1;33m";
+grey="\e[30;1m"
+brown="\e[0;33m"
 
 # show user only if it is root
 if [[ "${USER}" == "root" ]]; then
@@ -55,10 +57,22 @@ case $pref in
   PS1="\[\e[36m\][\W]\$ \[\e[0m\]"
 esac
 
-PS1="\[${color}\]"; # set starting color
-PS1+="[\w"; # working directory
-PS1+="\[${white}\]\$(__git_ps1)"; # white git branch
-PS1+="\[${color}\]]"; # close bracket same color
-PS1+="\n\$\[${reset}\] "; # newline, $, space and reset color
+divs=${grey}
+repo=${orange}
+modified=${red}
+staged=${green}
+
+PS1="\[${divs}\](\]"
+PS1+="\[${color}\]"; # set starting color
+PS1+="\w"; # working directory
+PS1+="\[${divs}\])-("; # working directory
+PS1+="\[${color}\]"; # set starting color
+PS1+="\[${repo}\]\$(__git_ps1)"; # white git branch
+PS1+="\[${divs}\]:"
+PS1+="\[${staged}\]\$(__git_staged)"
+PS1+="\[${divs}\],"
+PS1+="\[${modified}\]\$(__git_modified)"
+PS1+="\[${divs}\])\n"
+PS1+="\[${color}\]\$ \]${reset}\]"; # newline, $, space and reset color
 
 export PS1;

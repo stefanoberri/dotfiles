@@ -2,7 +2,24 @@
 __git_ps1 (){
   local b="$(git symbolic-ref HEAD 2>/dev/null)";
   if [ -n "$b" ]; then
-      printf " +%s" "${b##refs/heads/}";
+      printf "%s" "${b##refs/heads/}";
   fi
 }
- 
+
+__git_staged (){
+  if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
+    numOfstagedFiles=`git diff --name-only --cached | wc -l`
+  else
+    numOfstagedFiles=""
+  fi
+  echo "$numOfstagedFiles"
+}
+
+__git_modified (){
+  if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
+    numOfstagedFiles=`git diff --name-only | wc -l`
+  else
+    numOfstagedFiles=""
+  fi
+  echo "$numOfstagedFiles"
+}
