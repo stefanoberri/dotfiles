@@ -119,6 +119,8 @@ map ,,<CR> <Esc>:syn sync fromstart<CR>
 "
 " from http://henry.precheur.org/scratchpad/
 function s:InsertISODate()
+
+
     let timestamp = strftime('%Y-%m-%d')
     execute ":normal i" . timestamp
     echo 'New time: ' . timestamp
@@ -156,3 +158,6 @@ imap <C-k> <Down>
 " option to set the backspace to work (delete) in cygwin
 set nocompatible
 set backspace=2
+
+execute pathogen#infect()
+
