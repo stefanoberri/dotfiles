@@ -4,13 +4,13 @@
 function sourceit(){ [ -r "$1" ] && [ -f "$1" ] && source "$1"; }
 
 sourceit $HOME/.functions
-
-hosname=`hostname`
-if [ ! -e $HOME/.name ] || [ ! -r $HOME/.name ]; then
-  pref="generic" 
-else
-  pref=`grep -v '#' $HOME/.name | head -n 1`
-fi
+# 
+# hosname=`hostname`
+# if [ ! -e $HOME/.name ] || [ ! -r $HOME/.name ]; then
+#   pref="generic" 
+# else
+#   pref=`grep -v '#' $HOME/.name | head -n 1`
+# fi
 
 # see https://github.com/mathiasbynens/dotfiles/blob/master/.bash_prompt
 bold='';
@@ -35,22 +35,25 @@ else
   user="";
 fi;
 
-# Highlight the hostname when connected via SSH.
-if [[ "${SSH_TTY}" ]]; then
-  hostStyle="${bold}${red}";
-else
-  hostStyle="${yellow}";
-fi;
+# color clue about host
+# you could set hostColor to a color name in ~/.extrarc depending on hostname
+case $hostColor in 
+  cyan)
+  HC=${cyan}
+  ;;
+  *)
+  HC=${white} # not a know host
+esac
 
-# illumina Chesterford isilon
-case $pref in
+# color clue about filesystem (usually the physcal location) 
+case $fsName in
   generic|white)
   color=$white
   ;;
-  chuk-isilon|purple)
+  purple)
   color=$purple
   ;;
-  cygwin|cyan)
+  cyan)
   color=$cyan
   ;;
   *)
@@ -62,7 +65,11 @@ repo=${orange}
 modified=${red}
 staged=${green}
 
-PS1="\[${divs}\]("
+
+PS1="\[${divs}\](";
+PS1+="\[${HC}\]"; # set host color 
+PS1+="\h"; # hostname
+PS1+="\[${divs}\])-("; # working directory
 PS1+="\[${color}\]"; # set starting color
 PS1+="\w"; # working directory
 PS1+="\[${divs}\])-("; # working directory

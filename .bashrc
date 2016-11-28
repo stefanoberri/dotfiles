@@ -9,14 +9,14 @@ fi
 
 function sourceit(){ [ -r "$1" ] && [ -f "$1" ] && source "$1"; }
 
+# host specific settings
+sourceit $HOME/.extrarc
 # set aliases
 sourceit $HOME/.aliases
 # change the prompt text and color: some examples
 sourceit $HOME/.bash_prompt
 # source useful functions
 sourceit $HOME/.functions
-# host specific settings
-sourceit $HOME/.extrarc
 # export LANG=en_US.UTF-8
 
 # to use "magic" history (letters+urrow up find last commands in history
