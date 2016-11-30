@@ -41,6 +41,9 @@ case $hostColor in
   cyan)
   HC=${cyan}
   ;;
+  blue)
+  HC=${blue}
+  ;;
   *)
   HC=${white} # not a know host
 esac
@@ -49,6 +52,12 @@ esac
 case $fsName in
   generic|white)
   color=$white
+  ;;
+  green)
+  color=$green
+  ;;
+  blue)
+  color=$blue
   ;;
   purple)
   color=$purple
