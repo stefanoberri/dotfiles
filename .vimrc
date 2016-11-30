@@ -71,7 +71,7 @@ colorscheme elflord
 " for a bright background this would be better
 " colorscheme slate
 
-" Activate syntax autocpmpletion
+" Activate syntax autocpmpletion (Ctrl-n)
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
