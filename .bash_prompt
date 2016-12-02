@@ -59,6 +59,9 @@ case $fsName in
   blue)
   color=$blue
   ;;
+  orange)
+  color=$orange
+  ;;
   purple)
   color=$purple
   ;;
@@ -66,7 +69,8 @@ case $fsName in
   color=$cyan
   ;;
   *)
-  PS1="\[\e[36m\][\W]\$ \[\e[0m\]"
+  color=$white
+  # PS1="\[\e[36m\][\W]\$ \[\e[0m\]"
 esac
 
 divs=${grey}
