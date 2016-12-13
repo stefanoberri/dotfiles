@@ -159,5 +159,7 @@ imap <C-k> <Down>
 set nocompatible
 set backspace=2
 
-execute pathogen#infect()
+if exists(":pathogen")
+  execute pathogen#infect()
+endif
 
