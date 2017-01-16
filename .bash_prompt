@@ -78,6 +78,18 @@ repo=${orange}
 modified=${red}
 staged=${green}
 
+# git info can be switched on setting variable $SHOW_GIT to 1
+# might slow down the creation of the prompt
+GIT_INFO=""
+if [ $SHOW_GIT -eq 1 ]; then
+  GIT_INFO+="-(\[${color}\]"; # set starting color
+  GIT_INFO+="\[${repo}\]\$(__git_ps1)"; # white git branch
+  GIT_INFO+="\[${divs}\]:";
+  GIT_INFO+="\[${staged}\]\$(__git_staged)"; # num of staged files
+  GIT_INFO+="\[${divs}\],";
+  GIT_INFO+="\[${modified}\]\$(__git_modified)"; # num of modified files
+  GIT_INFO+="\[${divs}\])";
+fi
 
 PS1="\[${divs}\](";
 PS1+="\[${HC}\]"; # set host color 
@@ -85,14 +97,8 @@ PS1+="\h"; # hostname
 PS1+="\[${divs}\])-("; # working directory
 PS1+="\[${color}\]"; # set starting color
 PS1+="\w"; # working directory
-PS1+="\[${divs}\])-("; # working directory
-PS1+="\[${color}\]"; # set starting color
-PS1+="\[${repo}\]\$(__git_ps1)"; # white git branch
-PS1+="\[${divs}\]:"
-PS1+="\[${staged}\]\$(__git_staged)"
-PS1+="\[${divs}\],"
-PS1+="\[${modified}\]\$(__git_modified)"
-PS1+="\[${divs}\])\n"
-PS1+="\[${color}\]\$ \[${reset}\]"; # newline, $, space and reset color
+PS1+="\[${divs}\])"; # working directory
+PS1+=$GIT_INFO
+PS1+="\n\[${color}\]\$ \[${reset}\]"; # newline, $, space and reset color
 
 export PS1;
