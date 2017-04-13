@@ -29,7 +29,7 @@ grey="\e[30;1m"
 brown="\e[0;33m"
 
 # show user only if it is root
-if [[ "${USER}" == "root" ]]; then
+if [[ "${USER}" -eq "root" ]]; then
   user="<root>";
 else
   user="";
@@ -80,8 +80,9 @@ staged=${green}
 
 # git info can be switched on setting variable $SHOW_GIT to 1
 # might slow down the creation of the prompt
+SHOW_GIT=1
 GIT_INFO=""
-if [ $SHOW_GIT -eq 1 ]; then
+if [[ $SHOW_GIT == 1 ]]; then
   GIT_INFO+="-(\[${color}\]"; # set starting color
   GIT_INFO+="\[${repo}\]\$(__git_ps1)"; # white git branch
   GIT_INFO+="\[${divs}\]:";
