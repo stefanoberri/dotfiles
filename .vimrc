@@ -1,12 +1,12 @@
 " NOTES for rarely used commands
-" 
+"
 " :resize 60
 " :vertiacal resize 60
 " resize panes to specifided hight/width (60)
 "
 " if number has + or - sign (i.e. +12) it adds/subtract that to current size
 "
-" Ctrl-w N+  Ctrl-w N-  Ctrl-w N>  Ctrl-w N< 
+" Ctrl-w N+  Ctrl-w N-  Ctrl-w N>  Ctrl-w N<
 " increase horizontally, decrease horizontally, increase vertically, decrease
 " vertically the window N lines
 "
@@ -75,7 +75,7 @@ colorscheme elflord
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
-" if not present, add plugin from 
+" if not present, add plugin from
 " https://github.com/fholgado/minibufexpl.vim
 map <F2>n :MBEbn<CR>
 map <F2>p :MBEbp<CR>
@@ -88,7 +88,7 @@ map _ :split<CR>
 
 
 "" COMMENTING in a few languages (highlight in visual mode and then type the
-" combination    ,#   
+" combination    ,#
 "
 " ,# perl # comments
 map ,# :s/^/# /<CR>
@@ -112,15 +112,13 @@ map ,< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
 map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
 
 " iunmap \c
-map ,,<CR> <Esc>:syn sync fromstart<CR> 
+map ,,<CR> <Esc>:syn sync fromstart<CR>
 
-
+command Despace execute "%s/\\s\\+$//g"
 """ INSERT DATE
 "
 " from http://henry.precheur.org/scratchpad/
 function s:InsertISODate()
-
-
     let timestamp = strftime('%Y-%m-%d')
     execute ":normal i" . timestamp
     echo 'New time: ' . timestamp
