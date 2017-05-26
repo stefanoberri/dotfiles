@@ -43,6 +43,9 @@ set textwidth=79
 
 " highlight syntax
 syntax on
+filetype on
+" cwl files have same syntax highlightinh than yaml files
+au BufNewFile,BufRead *.cwl set filetype=yaml
 
 " set search case insensitive (to put it back case sensitive type
 " set noignorecase
