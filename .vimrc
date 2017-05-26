@@ -100,6 +100,10 @@ map ;# :s/\(\s\+\)/\1# /<CR>
 map ,,# :s/^# //<CR>
 map ;;# :s/\(\s\+\)# /\1/<CR>
 
+" deactivate search highlighting
+" https://stackoverflow.com/questions/99161/how-do-you-make-vim-unhighlight-what-you-searched-for
+set nohlsearch
+
 " <Esc>:nohlsearch<CR>
 "
 " ,% latex/matlab % comments
