@@ -41,6 +41,9 @@ case $hostColor in
   cyan)
   HC=${cyan}
   ;;
+  orange)
+  HC=${orange}
+  ;;
   blue)
   HC=${blue}
   ;;
