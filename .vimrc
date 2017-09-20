@@ -131,9 +131,12 @@ map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
 " iunmap \c
 map ,,<CR> <Esc>:syn sync fromstart<CR>
 
+""" CUSTOM COMMANDS 
+command Spell execute "set spell spelllang=en_gb"
+command Nospell execute "set nospell"
+
 command Despace execute "%s/\\s\\+$//g"
 """ INSERT DATE
-"
 " from http://henry.precheur.org/scratchpad/
 function s:InsertISODate()
     let timestamp = strftime('%Y-%m-%d')
