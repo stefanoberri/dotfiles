@@ -4,29 +4,26 @@
 function sourceit(){ [ -r "$1" ] && [ -f "$1" ] && source "$1"; }
 
 sourceit $HOME/.functions
-#
-# hosname=`hostname`
-# if [ ! -e $HOME/.name ] || [ ! -r $HOME/.name ]; then
-#   pref="generic"
-# else
-#   pref=`grep -v '#' $HOME/.name | head -n 1`
-# fi
 
 # see https://github.com/mathiasbynens/dotfiles/blob/master/.bash_prompt
 bold='';
 reset="\e[m";
 black="\e[1;30m";
-blue="\e[1;34m";
-cyan="\e[1;36m";
-green="\e[1;32m";
-orange="\e[1;33m";
-purple="\e[1;35m";
+darkgrey="\e[30;1m"
 red="\e[1;31m";
-violet="\e[1;35m";
-white="\e[1;37m";
+darkred="\e[0;31m";
+green="\e[1;32m";
+darkgreen="\e[0;32m";
 yellow="\e[1;33m";
-grey="\e[30;1m"
 brown="\e[0;33m"
+blue="\e[1;34m";
+darkblue="\e[0;34m";
+purple="\e[1;35m";
+violet="\e[0;35m";
+cyan="\e[1;36m";
+teal="\e[0;36m";
+white="\e[1;37m";
+lightgrey="\e[0;37m";
 
 # set display of user information
 if [[ "${USER}" == "root" ]]; then
@@ -36,38 +33,22 @@ else
 fi;
 
 # color clue about host
-# you could set hostColor to a color name in ~/.extrarc depending on hostname
-case $hostColor in
-  cyan)
-  HC=${cyan}
-  ;;
-  orange)
-  HC=${orange}
-  ;;
-  blue)
-  HC=${blue}
-  ;;
-  *)
-  HC=${white} # not a know host
-esac
+# set hostColor to a color name in ~/.extrarc depending on hostname
+if [ -n ${!hostColor} ]; then
+  HC=${!hostColor}
+else
+  echo "Color for host not defined: ${hostColor}"
+  HC=${white}
+fi
 
 # color clue about user
-# you could set userColor to a color name in ~/.extrarc depending on some
-# "special" users
-case $userColor in
-  cyan)
-  UC=${cyan}
-  ;;
-  green)
-  UC=${green}
-  ;;
-  blue)
+# set userColor to a color name in ~/.extrarc 
+if [ -n ${!userColor} ]; then
+  UC=${!userColor}
+else
+  echo "Color for user not defined: ${hostColor}"
   UC=${blue}
-  ;;
-  *)
-  UC=${white} # not a know host
-esac
-
+fi
 # however, root is always red
 if [[ "${USER}" == "root" ]]; then
   UC=${red};
@@ -75,34 +56,17 @@ fi
 
 
 # color clue about filesystem (usually the physcal location)
-case $fsName in
-  generic|white)
-  color=$white
-  ;;
-  green)
-  color=$green
-  ;;
-  blue)
-  color=$blue
-  ;;
-  orange)
-  color=$orange
-  ;;
-  purple)
-  color=$purple
-  ;;
-  cyan)
-  color=$cyan
-  ;;
-  *)
-  color=$white
-  # PS1="\[\e[36m\][\W]\$ \[\e[0m\]"
-esac
+# set fsColor to a color name in ~/.extrarc 
+if [ -n ${!fsColor} ]; then
+  color=${!fsColor}
+else
+  echo "Color for file system not defined: ${fsColor}"
+  color=${white}
+fi
 
-# color clue about user
 
-divs=${grey}
-repo=${orange}
+divs=${lightgrey}
+repo=${yellow}
 modified=${red}
 staged=${green}
 
@@ -125,7 +89,7 @@ USER_INFO+="\[${UC}\]"; # set starting color
 USER_INFO+="\u"; # user
 
 
-PS1="\[${divs}\](";
+PS1="\[${divs}\]┌─("; # line linker
 PS1+="${USER_INFO}";
 PS1+="\[${divs}\]@";
 PS1+="\[${HC}\]"; # set host color
@@ -134,7 +98,8 @@ PS1+="\[${divs}\])-("; # working directory
 PS1+="\[${color}\]"; # set starting color
 PS1+="\w"; # working directory
 PS1+="\[${divs}\])"; # working directory
-PS1+=$GIT_INFO
-PS1+="\n\[${color}\]\$ \[${reset}\]"; # newline, $, space and reset color
+PS1+=$GIT_INFO;
+PS1+="\n"; # newline
+PS1+="\[${divs}\]└─\[${color}\]\$ \[${reset}\]"; # line linker, $, space and reset color
 
 export PS1;
