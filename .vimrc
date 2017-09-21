@@ -10,7 +10,17 @@
 " increase horizontally, decrease horizontally, increase vertically, decrease
 " vertically the window N lines
 "
-"
+" SPELLING
+" https://www.linux.com/learn/using-spell-checking-vim
+" activate spelling highlight
+" :set spell spelllang=en_gb
+" in command mode type [s  and ]s for previous and next word. Type z= for a
+" list of suggestions and zg to add a word to a dictionary, zw for marking it a
+" wrong
+" Remove spelling highlight
+" :set nospell
+" Set spelling for this buffer only
+" :setlocal spell spelllang=en_gb
 
 
 " add numbers on the left
@@ -121,9 +131,12 @@ map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
 " iunmap \c
 map ,,<CR> <Esc>:syn sync fromstart<CR>
 
+""" CUSTOM COMMANDS 
+command Spell execute "set spell spelllang=en_gb"
+command Nospell execute "set nospell"
+
 command Despace execute "%s/\\s\\+$//g"
 """ INSERT DATE
-"
 " from http://henry.precheur.org/scratchpad/
 function s:InsertISODate()
     let timestamp = strftime('%Y-%m-%d')
