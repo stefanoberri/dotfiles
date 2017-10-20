@@ -90,7 +90,7 @@ function create_symlinks(){
         rm $TARGET
       fi
       TARGETDIR=$(dirname $TARGET)
-      ln -s -t $TARGETDIR $SOURCE
+      ln -s $SOURCE $TARGET
     fi
   done
 }
