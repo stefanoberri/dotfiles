@@ -100,6 +100,6 @@ PS1+="\w"; # working directory
 PS1+="\[${divs}\])"; # working directory
 PS1+=$GIT_INFO;
 PS1+="\n"; # newline
-PS1+="\[${divs}\]└─\[${color}\]\$ \[${reset}\]"; # line linker, $, space and reset color
+PS1+="\[${divs}\]└\[${color}\]\$ \[${reset}\]"; # line linker, $, space and reset color
 
 export PS1;
