@@ -23,6 +23,7 @@ sourceit $HOME/.functions
 export PATH="$HOME/bin:$PATH";
 
 # MacOSX has strange default colors. Change them
+# http://www.marinamele.com/2014/05/customize-colors-of-your-terminal-in-mac-os-x.html
 if [[ "$OSTYPE" == "darwin"* ]]; then
   # export LSCOLORS=exfxcxdxbxegedabagacad
   export LSCOLORS=exGxbxdxcxegedabagacad

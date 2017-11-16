@@ -9,4 +9,3 @@ sourceit $HOME/.profile
 # if it is an interactive shell, source ~/.bashrc
 case "$-" in *i*) sourceit $HOME/.bashrc ;; esac
 
-# http://www.marinamele.com/2014/05/customize-colors-of-your-terminal-in-mac-os-x.html

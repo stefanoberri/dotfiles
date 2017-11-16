@@ -23,7 +23,8 @@ Here a schema of how file source each other
 	    |-> .profile # not currently present
 	    |-> .bashrc
 	           |-> /etc/bashrc # system wide settings
-	           |-> .extrarc
+	           |-> .extrarc # optional file not included for
+		   |            # system-specific settings
 	           |-> .aliases
 	           |-> .bash_prompt
 	           |-> .functions
