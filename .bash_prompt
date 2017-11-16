@@ -70,6 +70,12 @@ repo=${yellow}
 modified=${red}
 staged=${green}
 
+# conda virtual environemnt name can be displayed in the prompt. Normally, this
+# happen automatically and is prepended at the very beginning. To have control,
+# add 'changeps1: False' to $HOME/.condarc (not managed by this repo) and
+# set SHOW_CONDA_ENV=1
+SHOW_CONDA_ENV=1
+
 # git info can be switched on setting variable $SHOW_GIT to 1
 # might slow down the creation of the prompt
 SHOW_GIT=1
@@ -100,6 +106,7 @@ PS1+="\w"; # working directory
 PS1+="\[${divs}\])"; # working directory
 PS1+=$GIT_INFO;
 PS1+="\n"; # newline
-PS1+="\[${divs}\]└\[${color}\]\$ \[${reset}\]"; # line linker, $, space and reset color
+PS1+="\[${divs}\]└\[${color}\]\$ \[${reset}\]"; # line linker, conda_env, $, space and reset color
+# PS1+="\[${divs}\]└\[${color}\]$(__conda_env)\$ \[${reset}\]"; # line linker, conda_env, $, space and reset color
 
 export PS1;
