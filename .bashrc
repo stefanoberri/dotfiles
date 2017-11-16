@@ -19,6 +19,15 @@ sourceit $HOME/.bash_prompt
 sourceit $HOME/.functions
 # export LANG=en_US.UTF-8
 
+# User specific environment and startup programs
+export PATH="$HOME/bin:$PATH";
+
+# MacOSX has strange default colors. Change them
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # export LSCOLORS=exfxcxdxbxegedabagacad
+  export LSCOLORS=exGxbxdxcxegedabagacad
+fi
+
 # to use "magic" history (letters+urrow up find last commands in history
 # starting with those letters). requires .inputrc
 shopt -s histappend
