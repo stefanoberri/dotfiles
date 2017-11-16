@@ -15,11 +15,28 @@ if you edit your `~/.bashrc` file, you will actually edit a file in the git
 repository and that change can easily be tracked. Also, you could get fancy and
 have branches, but unexpected behaviour might happen.
 
+## Bash source order
+
+Here a schema of how file source each other
+	
+	.bash_profile
+	    |-> .profile # not currently present
+	    |-> .bashrc
+	           |-> /etc/bashrc # system wide settings
+	           |-> .extrarc
+	           |-> .aliases
+	           |-> .bash_prompt
+	           |-> .functions
+	           |-> .bash_profile
+	           |-> .inputrc # set variable INPUTRC
+
+
+
 ## Useful links
 
-- Difference between .bashrc, .profile, .bash_profile
+- Difference between .bashrc, .profile, .bash\_profile
   - http://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile
-  - http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
+  - http://www.joshstaiger.org/archives/2005/07/bash\_profile\_vs.html
   - http://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile/183980
 
 - Other dotfiles repos
