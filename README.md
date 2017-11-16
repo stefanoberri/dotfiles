@@ -17,7 +17,7 @@ have branches, but unexpected behaviour might happen.
 
 ## Bash source order
 
-Here a schema of how file source each other
+Here a schema of how files source each other
 	
 	.bash_profile
 	    |-> .profile # not currently present
@@ -28,14 +28,15 @@ Here a schema of how file source each other
 	           |-> .aliases
 	           |-> .bash_prompt
 	           |-> .functions
-	           |-> .bash_profile
 	           |-> .inputrc # set variable INPUTRC
 
-
+When you login, an interactive, login shell is started and `.bash_profile` is
+sourced. When bash is called, then an interactive non-login shell is started
+and `.bashrc` is sourced
 
 ## Useful links
 
-- Difference between .bashrc, .profile, .bash\_profile and behaviour of `bash`
+- Difference between `.bashrc`, `.profile`, `.bash_profile` and behaviour of `bash`
   - http://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile
   - http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
   - http://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile/183980
