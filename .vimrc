@@ -29,15 +29,16 @@ set nu
 " don't highlight after searches
 set hls!
 
-" use indents of 2 spaces, and have them copied down lines:
-set shiftwidth=2
-" set shiftround
 
+" use indents of 2 spaces. Keep these commands together as they should be
+" changed at once. See :help tabstop
 " tab are actually spaces (type Ctrl-V<Tab> to insert a real tab and use
 " command :retab to change all existing tab to the new style
 " to remove the tab conversion enter ':set noexpandtab'
-set expandtab
-set tabstop=2
+
+set shiftwidth=2 softtabstop=2 tabstop=8 noexpandtab
+" set shiftround
+
 set autoindent
 
 " don't make it look like there are line breaks where there aren't:
@@ -54,6 +55,8 @@ set textwidth=79
 " highlight syntax
 syntax on
 filetype on
+
+""" Filetype specific
 " cwl files have same syntax highlightinh than yaml files
 au BufNewFile,BufRead *.cwl set filetype=yaml
 
@@ -131,7 +134,7 @@ map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
 " iunmap \c
 map ,,<CR> <Esc>:syn sync fromstart<CR>
 
-""" CUSTOM COMMANDS 
+""" CUSTOM COMMANDS
 command Spell execute "set spell spelllang=en_gb"
 command Nospell execute "set nospell"
 
