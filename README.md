@@ -34,10 +34,11 @@ Here a schema of how file source each other
 
 ## Useful links
 
-- Difference between .bashrc, .profile, .bash\_profile
+- Difference between .bashrc, .profile, .bash\_profile and behaviour of `bash`
   - http://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile
-  - http://www.joshstaiger.org/archives/2005/07/bash\_profile\_vs.html
+  - http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
   - http://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile/183980
+  - http://www.linuxfromscratch.org/blfs/view/6.3/postlfs/profile.html
 
 - Other dotfiles repos
   - https://dotfiles.github.io/
