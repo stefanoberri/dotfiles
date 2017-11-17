@@ -59,6 +59,8 @@ filetype on
 """ Filetype specific
 " cwl files have same syntax highlightinh than yaml files
 au BufNewFile,BufRead *.cwl set filetype=yaml
+" eb files have same syntax highlightinh than py files
+au BufNewFile,BufRead *.eb set filetype=python
 
 " set search case insensitive (to put it back case sensitive type
 " set noignorecase
