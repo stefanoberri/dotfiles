@@ -26,6 +26,9 @@
 " add numbers on the left
 set nu
 
+" add ruler with information about cursor position
+set ruler
+
 " don't highlight after searches
 set hls!
 
