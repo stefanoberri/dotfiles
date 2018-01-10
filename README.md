@@ -17,7 +17,8 @@ have branches, but unexpected behaviour might happen.
 
 ## Bash source order
 
-Here a schema of how files source each other
+Here a schema of how files source each other. For a comprehensive description,
+see [this link](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html)
 	
 	.bash_profile
 	    |-> .profile # not currently present
