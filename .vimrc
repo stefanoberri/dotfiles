@@ -234,8 +234,3 @@ imap <C-k> <Down>
 
 " option to set the backspace to work (delete) in cygwin
 set backspace=2
-
-if exists(":pathogen")
-  execute pathogen#infect()
-endif
-
