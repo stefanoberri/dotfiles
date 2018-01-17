@@ -9,5 +9,3 @@ sourceit $HOME/.profile
 # if it is an interactive shell, source ~/.bashrc
 case "$-" in *i*) sourceit $HOME/.bashrc ;; esac
 
-# User specific environment and startup programs
-export PATH="$HOME/bin:$PATH";

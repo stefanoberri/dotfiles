@@ -23,3 +23,11 @@ __git_modified (){
   fi
   echo "$numOfstagedFiles"
 }
+
+__conda_env (){
+  CONDA_INFO=''
+  if [[ $SHOW_CONDA_ENV == 1 && -n $CONDA_DEFAULT_ENV ]]; then
+    CONDA_INFO+="($CONDA_DEFAULT_ENV)"
+  fi
+  echo $CONDA_INFO
+}
