@@ -57,9 +57,9 @@ Plugin 'fholgado/minibufexpl.vim'
 "
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
+" filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
+filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -149,12 +149,23 @@ colorscheme elflord
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
-" if not present, add plugin from
+" Allow hidden buffers
+" A hidden buffer is a buffer with some unsaved modifications and is not
+" displayed in a window.
+set hidden
+
+" Mappings to move between buffers when using minibufexpl
 " https://github.com/fholgado/minibufexpl.vim
-map <F2>n :MBEbn<CR>
-map <F2>p :MBEbp<CR>
-map <F2>f :MBEbf<CR>
-map <F2>b :MBEbb<CR>
+" next (numerically)
+map <C-a>l :MBEbn<CR>
+" previous (numerically)
+map <C-a>h :MBEbp<CR>
+" next (historically)
+map <C-a>j :MBEbf<CR>
+" previous (historically)
+map <C-a>k :MBEbb<CR>
+
+" Easy split
 map \| :vsplit<CR>
 map _ :split<CR>
 
@@ -195,6 +206,7 @@ map ,,<CR> <Esc>:syn sync fromstart<CR>
 """ CUSTOM COMMANDS
 command Spell execute "set spell spelllang=en_gb"
 command Nospell execute "set nospell"
+command CB execute ":MBEbd"
 
 command Despace execute "%s/\\s\\+$//g"
 """ INSERT DATE
