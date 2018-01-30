@@ -38,6 +38,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 "
 Plugin 'fholgado/minibufexpl.vim'
+Plugin 'scrooloose/syntastic'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -71,7 +72,7 @@ filetype plugin on
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
+" To install from command line: vim +PluginInstall +qall
 " End of Vundle ------------------
 
 
@@ -154,6 +155,8 @@ set omnifunc=syntaxcomplete#Complete
 " displayed in a window.
 set hidden
 
+" MiniBufExpl settings ==============
+"
 " Mappings to move between buffers when using minibufexpl
 " https://github.com/fholgado/minibufexpl.vim
 " next (numerically)
@@ -164,6 +167,23 @@ map <C-a>h :MBEbp<CR>
 map <C-a>j :MBEbf<CR>
 " previous (historically)
 map <C-a>k :MBEbb<CR>
+
+" Syntastic settings ==============
+"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Set Python checker with flake8 and pylint. Either must be installed in
+" default python to enable syntax checks
+let g:syntastic_python_checkers = ['flake8', 'pylint']
+
+
 
 " Easy split
 map \| :vsplit<CR>
