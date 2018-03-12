@@ -63,6 +63,43 @@ filetype plugin on
 " Put your non-Plugin stuff after this line
 " To install from command line: vim +PluginInstall +qall
 " End of Vundle ------------------
+"
+" ==== PLUGIN SETTINGS =============
+"
+" == MiniBufExpl settings ==============
+"
+" Mappings to move between buffers when using minibufexpl
+" https://github.com/fholgado/minibufexpl.vim
+" next (numerically)
+map <C-a>l :MBEbn<CR>
+" previous (numerically)
+map <C-a>h :MBEbp<CR>
+" next (historically)
+map <C-a>j :MBEbf<CR>
+" previous (historically)
+map <C-a>k :MBEbb<CR>
+" = Colors ===
+
+" == Syntastic settings ==============
+"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Set Python checker with flake8 and pylint. Either must be installed in
+" default python to enable syntax checks
+let g:syntastic_python_checkers = ['flake8', 'pylint']
+
+" == NERDTree settings ===============
+" Map F2 to toggle NERDTree
+silent! map <F2> :NERDTreeToggle<CR>
+" Map F3 to find file in NERDTree
+silent! map <F3> :NERDTreeFind<CR>
 
 
 
@@ -143,36 +180,6 @@ set omnifunc=syntaxcomplete#Complete
 " A hidden buffer is a buffer with some unsaved modifications and is not
 " displayed in a window.
 set hidden
-
-" MiniBufExpl settings ==============
-"
-" Mappings to move between buffers when using minibufexpl
-" https://github.com/fholgado/minibufexpl.vim
-" next (numerically)
-map <C-a>l :MBEbn<CR>
-" previous (numerically)
-map <C-a>h :MBEbp<CR>
-" next (historically)
-map <C-a>j :MBEbf<CR>
-" previous (historically)
-map <C-a>k :MBEbb<CR>
-
-" Syntastic settings ==============
-"
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Set Python checker with flake8 and pylint. Either must be installed in
-" default python to enable syntax checks
-let g:syntastic_python_checkers = ['flake8', 'pylint']
-
-
 
 " Easy split
 map \| :vsplit<CR>
