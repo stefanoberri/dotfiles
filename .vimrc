@@ -71,13 +71,17 @@ filetype plugin on
 " Mappings to move between buffers when using minibufexpl
 " https://github.com/fholgado/minibufexpl.vim
 " next (numerically)
-map <C-a>l :MBEbn<CR>
+" map <C-a>l :MBEbn<CR>
+map <C-l> :MBEbn<CR>
 " previous (numerically)
-map <C-a>h :MBEbp<CR>
+" map <C-a>h :MBEbp<CR>
+map <C-h> :MBEbp<CR>
 " next (historically)
-map <C-a>j :MBEbf<CR>
+" map <C-a>j :MBEbf<CR>
+map <C-j> :MBEbf<CR>
 " previous (historically)
-map <C-a>k :MBEbb<CR>
+" map <C-a>k :MBEbb<CR>
+map <C-k> :MBEbb<CR>
 " = Colors ===
 
 " == Syntastic settings ==============
