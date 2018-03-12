@@ -19,6 +19,7 @@ files2sync="
   .tmux.conf
   .tmuxStatus.sh
   .vimrc
+  .ctags
   bin/tmuxStatus
   "
 
@@ -127,4 +128,12 @@ if [ $GIT_MISSING -eq 0 ]; then
 else
   echo "git not available. Skipping Vundle installation"
 fi
+
+
+## Git config ------------------
+# set vim as default editor for git
+git config --global core.editor vim
+# set git difftool to use vimdiff, no prompting for confirmation
+git config --global diff.tool vimdiff
+git config --global --add difftool.prompt false
 

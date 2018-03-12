@@ -39,6 +39,8 @@ Plugin 'VundleVim/Vundle.vim'
 "
 " Mini buff Explorer
 Plugin 'fholgado/minibufexpl.vim'
+" Syntastic
+Plugin 'scrooloose/syntastic'
 " Nerdtree
 Plugin 'scrooloose/nerdTree'
 " The following are examples of different formats supported.
@@ -60,9 +62,9 @@ Plugin 'scrooloose/nerdTree'
 "
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
+" filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
+filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -74,7 +76,7 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
+" To install from command line: vim +PluginInstall +qall
 " End of Vundle ------------------
 
 
@@ -152,12 +154,42 @@ colorscheme elflord
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
-" if not present, add plugin from
+" Allow hidden buffers
+" A hidden buffer is a buffer with some unsaved modifications and is not
+" displayed in a window.
+set hidden
+
+" MiniBufExpl settings ==============
+"
+" Mappings to move between buffers when using minibufexpl
 " https://github.com/fholgado/minibufexpl.vim
-map <F2>n :MBEbn<CR>
-map <F2>p :MBEbp<CR>
-map <F2>f :MBEbf<CR>
-map <F2>b :MBEbb<CR>
+" next (numerically)
+map <C-a>l :MBEbn<CR>
+" previous (numerically)
+map <C-a>h :MBEbp<CR>
+" next (historically)
+map <C-a>j :MBEbf<CR>
+" previous (historically)
+map <C-a>k :MBEbb<CR>
+
+" Syntastic settings ==============
+"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Set Python checker with flake8 and pylint. Either must be installed in
+" default python to enable syntax checks
+let g:syntastic_python_checkers = ['flake8', 'pylint']
+
+
+
+" Easy split
 map \| :vsplit<CR>
 map _ :split<CR>
 
@@ -198,6 +230,7 @@ map ,,<CR> <Esc>:syn sync fromstart<CR>
 """ CUSTOM COMMANDS
 command Spell execute "set spell spelllang=en_gb"
 command Nospell execute "set nospell"
+command CB execute ":MBEbd"
 
 command Despace execute "%s/\\s\\+$//g"
 """ INSERT DATE
