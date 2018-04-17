@@ -100,10 +100,10 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8', 'pylint']
 
 " == NERDTree settings ===============
-" Map F2 to toggle NERDTree
-silent! map <F2> :NERDTreeToggle<CR>
-" Map F3 to find file in NERDTree
-silent! map <F3> :NERDTreeFind<CR>
+" Map F2 to toggle NERDTree. Resize vertical split with Ctrl-w =
+silent! map <F2> :NERDTreeToggle<CR><C-w>=
+" Map F3 to find file in NERDTree. Resize vertical split with Ctrl-w =
+silent! map <F3> :NERDTreeFind<CR><C-w>=
 
 
 
