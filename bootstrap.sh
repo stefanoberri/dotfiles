@@ -21,6 +21,7 @@ files2sync="
   .vimrc
   .ctags
   bin/tmuxStatus
+  bin/gr
   "
 
 function usage(){
@@ -102,13 +103,16 @@ parse_args "$@"
 if [ ! -d $HOME/bin ]; then
   mkdir $HOME/bin
 fi
-any_exists $files2sync # set variable $exists
-if [ "$exists" == "0" -o "$force" == "1" ]; then
-  create_symlinks $files2sync
-else
-  report_existing $files2sync
-  echo "use --force to override"
-fi
+
+for f in $files2sync; do
+  any_exists $f # set variable $exists
+  if [ "$exists" == "0" -o "$force" == "1" ]; then
+    create_symlinks $f
+  else
+    report_existing $f
+    echo "use --force to override"
+  fi
+done
 
 # Install Vundle (requires git)
 VUNDLE=$HOME/.vim/bundle/Vundle.vim
