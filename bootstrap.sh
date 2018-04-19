@@ -75,14 +75,6 @@ function any_exists(){
   done
 }
 
-function report_existing(){
-  for f in "$@"; do
-    if [ -f $HOME/$f ]; then
-      echo "file $HOME/$f already exists"
-    fi
-  done
-}
-
 function create_symlinks(){
   for f in "$@"; do
     TARGET=$HOME/$f
@@ -91,7 +83,7 @@ function create_symlinks(){
       if [ -e $TARGET ]; then
         rm $TARGET
       fi
-      TARGETDIR=$(dirname $TARGET)
+      echo "Creating link from $TARGET to $SOURCE ..."
       ln -s $SOURCE $TARGET
     fi
   done
@@ -109,8 +101,7 @@ for f in $files2sync; do
   if [ "$exists" == "0" -o "$force" == "1" ]; then
     create_symlinks $f
   else
-    report_existing $f
-    echo "use --force to override"
+    echo "File $HOME/$f already exists. Use --force to override"
   fi
 done
 
