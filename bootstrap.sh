@@ -81,6 +81,7 @@ function create_symlinks(){
     SOURCE=$PWD/$f
     if [ -e $SOURCE ]; then
       if [ -e $TARGET ]; then
+	echo "Removing $TARGET..."
         rm $TARGET
       fi
       echo "Creating link from $TARGET to $SOURCE ..."
@@ -104,6 +105,24 @@ for f in $files2sync; do
     echo "File $HOME/$f already exists. Use --force to override"
   fi
 done
+
+# Install files to overrule the settings after loading the global plugin
+# see http://vimdoc.sourceforge.net/htmldoc/filetype.html#ftplugin-overrule
+FTAFTER=$HOME/.vim/after/ftplugin
+if [ ! -d $FTAFTER ]; then
+  mkdir -p $FTAFTER
+fi
+for f in `ls .vim/after/ftplugin/*.vim`; do
+  any_exists $f # set variable $exists
+  if [ "$exists" == "0" -o "$force" == "1" ]; then
+    create_symlinks $f
+  else
+    echo "File $HOME/$f already exists. Use --force to override"
+  fi
+
+done
+
+
 
 # Install Vundle (requires git)
 VUNDLE=$HOME/.vim/bundle/Vundle.vim
