@@ -22,6 +22,7 @@ files2sync="
   .ctags
   bin/tmuxStatus
   bin/gr
+  bin/prettyJSON
   "
 
 function usage(){
