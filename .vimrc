@@ -72,16 +72,16 @@ filetype plugin on
 " https://github.com/fholgado/minibufexpl.vim
 " next (numerically)
 " map <C-a>l :MBEbn<CR>
-map <C-l> :MBEbn<CR>
+nnoremap <C-l> :MBEbn<CR>
 " previous (numerically)
 " map <C-a>h :MBEbp<CR>
-map <C-h> :MBEbp<CR>
+nnoremap <C-h> :MBEbp<CR>
 " next (historically)
 " map <C-a>j :MBEbf<CR>
-map <C-j> :MBEbf<CR>
+nnoremap <C-j> :MBEbf<CR>
 " previous (historically)
 " map <C-a>k :MBEbb<CR>
-map <C-k> :MBEbb<CR>
+nnoremap <C-k> :MBEbb<CR>
 " = Colors ===
 
 " == Syntastic settings ==============
@@ -101,11 +101,16 @@ let g:syntastic_python_checkers = ['flake8', 'pylint']
 
 " == NERDTree settings ===============
 " Map F2 to toggle NERDTree. Resize vertical split with Ctrl-w =
-silent! map <F2> :NERDTreeToggle<CR><C-w>=
+silent! nnoremap <F2> :NERDTreeToggle<CR><C-w>=
 " Map F3 to find file in NERDTree. Resize vertical split with Ctrl-w =
-silent! map <F3> :NERDTreeFind<CR><C-w>=
+silent! nnoremap <F3> :NERDTreeFind<CR><C-w>=
 
 
+
+" == Settings ==
+
+" Set the leader
+:let mapleader = ","
 
 " add numbers on the left
 set nu
@@ -167,11 +172,6 @@ set foldmethod=indent
 
 " set a nice colorsheme for a dark background
 colorscheme elflord
-" a slighly modified elflord  colorscheme
-" colorscheme stefano
-" dowloaded from
-" https://bitbucket.org/jasonwryan/centurion/src/aec27bb5dab4/.vim/colors?at=default
-" colorscheme miro8
 
 " for a bright background this would be better
 " colorscheme slate
@@ -186,42 +186,40 @@ set omnifunc=syntaxcomplete#Complete
 set hidden
 
 " Easy split
-map \| :vsplit<CR>
-map _ :split<CR>
+noremap \| :vsplit<CR>
+noremap _ :split<CR>
 
-
-
+" deactivate search highlighting
+set nohlsearch
 
 "" COMMENTING in a few languages (highlight in visual mode and then type the
 " combination    ,#
 "
 " ,# perl # comments
-map ,# :s/^/# /<CR>
-map ;# :s/\(\s\+\)/\1# /<CR>
+noremap <leader># :s/^/# /<CR>
+noremap <leader>@ :s/\(\s\+\)/\1# /<CR>
 " now remove them
-map ,,# :s/^# //<CR>
-map ;;# :s/\(\s\+\)# /\1/<CR>
+noremap <leader>,# :s/^# //<CR>
+noremap <leader>,' :s/\(\s\+\)# /\1/<CR>
 
-" deactivate search highlighting
-" https://stackoverflow.com/questions/99161/how-do-you-make-vim-unhighlight-what-you-searched-for
-set nohlsearch
-
-" <Esc>:nohlsearch<CR>
-"
 " ,% latex/matlab % comments
-map ,% :s/^/% /<CR><Esc>:nohlsearch<CR>
+noremap <leader>% :s/^/% /<CR><Esc>:nohlsearch<CR>
+noremap <leader>,% :s/^% //<CR>
 "
 " ,/ C/C++/C#/Java // comments
-map ,/ :s/^/\/\/ /<CR><Esc>:nohlsearch<CR>
+noremap <leader>/ :s/^/\/\/ /<CR><Esc>:nohlsearch<CR>
+noremap <leader>,/ :s/^\/\/ //<CR>
 "
 " ,< HTML comment
-map ,< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
+noremap <leader>< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
+noremap <leader>,< :s/^<!-- \(.*\) -->/\1/<CR><Esc>:nohlsearch<CR>
 "
 " c++ java style comments
-map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
+noremap <leader>* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
+noremap <leader>,* :s/^\/\* \(.*\) \*\/$/\1/<CR>
 
-" iunmap \c
-map ,,<CR> <Esc>:syn sync fromstart<CR>
+" re-sync syntax highlighting
+map <leader>,<CR> <Esc>:syntax sync fromstart<CR>
 
 """ CUSTOM COMMANDS
 command Spell execute "set spell spelllang=en_gb"
