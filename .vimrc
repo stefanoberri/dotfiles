@@ -195,12 +195,14 @@ set nohlsearch
 "" COMMENTING in a few languages (highlight in visual mode and then type the
 " combination    ,#
 "
-" ,# perl # comments
+" perl/R/bash/python etc comments: #
+" # at beginning of line
 noremap <leader># :s/^/# /<CR>
-noremap <leader>@ :s/\(\s\+\)/\1# /<CR>
+" # before first character on line
+noremap <leader>' :s/^\(\s*\)/\1# /<CR>
 " now remove them
 noremap <leader>,# :s/^# //<CR>
-noremap <leader>,' :s/\(\s\+\)# /\1/<CR>
+noremap <leader>,' :s/\(\s*\)# /\1/<CR>
 
 " ,% latex/matlab % comments
 noremap <leader>% :s/^/% /<CR><Esc>:nohlsearch<CR>
