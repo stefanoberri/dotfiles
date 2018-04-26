@@ -110,7 +110,17 @@ silent! nnoremap <F3> :NERDTreeFind<CR><C-w>=
 " == Settings ==
 
 " Set the leader
-:let mapleader = ","
+let mapleader = ","
+
+" quick edit .vimrc
+nnoremap <leader>ev :split $MYVIMRC<cr>
+" quick source .vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" No more ESC key!
+inoremap jk <esc>
+" And, temporarly, disable ESC
+inoremap <esc> <nop>
 
 " add numbers on the left
 set nu
