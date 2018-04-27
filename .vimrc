@@ -187,7 +187,6 @@ colorscheme elflord
 " colorscheme slate
 
 " Activate syntax autocpmpletion (Ctrl-n)
-filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
 " Allow hidden buffers
@@ -205,75 +204,73 @@ set nohlsearch
 "" COMMENTING in a few languages (highlight in visual mode and then type the
 " combination    ,#
 "
-" perl/R/bash/python etc comments: #
+" perl/R/bash/python comments: #
 " # at beginning of line
-noremap <leader># :s/^/# /<CR>
+autocmd FileType python,perl,R,sh noremap <leader># :s/^/# /<CR>
 " # before first character on line
-noremap <leader>' :s/^\(\s*\)/\1# /<CR>
+autocmd FileType python,perl,R,sh noremap <leader>' :s/^\(\s*\)/\1# /<CR>
 " now remove them
-noremap <leader>,# :s/^# //<CR>
-noremap <leader>,' :s/\(\s*\)# /\1/<CR>
+autocmd FileType python,perl,R,sh noremap <leader>,# :s/^# //<CR>
+autocmd FileType python,perl,R,sh noremap <leader>,' :s/\(\s*\)# /\1/<CR>
 
-" ,% latex/matlab % comments
-noremap <leader>% :s/^/% /<CR><Esc>:nohlsearch<CR>
-noremap <leader>,% :s/^% //<CR>
+" latex/matlab comments: --
+autocmd FileType tex,matlab noremap <leader># :s/^/% /<CR><Esc>:nohlsearch<CR>
+autocmd FileType tex,matlab noremap <leader>,# :s/^% //<CR>
+
+" vim comments: "
+autocmd FileType vim noremap <leader># :s/^/" /<CR><Esc>:nohlsearch<CR>
+autocmd FileType vim noremap <leader>,# :s/^" //<CR>
+
+" SQL comments: --
+autocmd FileType sql noremap <leader># :s/^/-- /<CR><Esc>:nohlsearch<CR>
+autocmd FileType sql noremap <leader>,# :s/^-- //<CR>
 "
 " ,/ C/C++/C#/Java // comments
-noremap <leader>/ :s/^/\/\/ /<CR><Esc>:nohlsearch<CR>
-noremap <leader>,/ :s/^\/\/ //<CR>
+autocmd FileType c,cpp,java,javascript noremap <leader># :s/^/\/\/ /<CR><Esc>:nohlsearch<CR>
+autocmd FileType c,cpp,java,javascript noremap <leader>,# :s/^\/\/ //<CR>
 "
 " ,< HTML comment
 noremap <leader>< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
 noremap <leader>,< :s/^<!-- \(.*\) -->/\1/<CR><Esc>:nohlsearch<CR>
 "
-" c++ java style comments
+" c++/java BLOCK comments
 noremap <leader>* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
 noremap <leader>,* :s/^\/\* \(.*\) \*\/$/\1/<CR>
 
 " re-sync syntax highlighting
 map <leader>,<CR> <Esc>:syntax sync fromstart<CR>
 
-""" CUSTOM COMMANDS
-command Spell execute "set spell spelllang=en_gb"
-command Nospell execute "set nospell"
-command CB execute ":MBEbd"
+""" MOVING AROUND
+" makes hjkl also work in insert mode with ctrl
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-j> <Up>
+inoremap <C-k> <Down>
 
-command Despace execute "%s/\\s\\+$//ge"
+
+
+""" CUSTOM COMMANDS
+command! Spell execute "set spell spelllang=en_gb"
+command! Nospell execute "set nospell"
+command! CB execute ":MBEbd"
+
+command! Despace execute "%s/\\s\\+$//ge"
 """ INSERT DATE
 " from http://henry.precheur.org/scratchpad/
-function s:InsertISODate()
+function! s:InsertISODate()
     let timestamp = strftime('%Y-%m-%d')
     execute ":normal i" . timestamp
     echo 'New time: ' . timestamp
 endfunction
 
-function s:InsertISODatetime()
+function! s:InsertISODatetime()
     let timestamp = strftime('%Y-%m-%d %H:%M:%S')
     execute ":normal i" . timestamp
     echo 'New time: ' . timestamp
 endfunction
 
-command Day   call s:InsertISODate()
-command Now   call s:InsertISODatetime()
-
-""" MOVING AROUND
-" page down with <Space> (like in `Pine', `Less', and `More');
-" page up with - (like in `Lynx', `Mutt', `Pine'),
-" or <BkSpc> (like in `Netscape Navigator'): don't like this anymore.
-noremap <Space> <PageDown>
-" noremap <BS> <PageUp>
-noremap - <PageUp>
-
-" makes hjkl also work in insert mode with ctrl
-imap <C-h> <Left>
-imap <C-l> <Right>
-imap <C-j> <Up>
-imap <C-k> <Down>
-
-" to work nicely with tmux
-
-" map C 0i#[CTRL]-ESC j
-" The previous do not know exactly what it does
+command! Day   call s:InsertISODate()
+command! Now   call s:InsertISODatetime()
 
 
 " option to set the backspace to work (delete) in cygwin
