@@ -120,7 +120,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " No more ESC key!
 inoremap jk <esc>
 " And, temporarly, disable ESC
-inoremap <esc> <nop>
+" inoremap <esc> <nop>
 
 " add numbers on the left
 set nu
