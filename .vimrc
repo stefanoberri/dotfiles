@@ -95,9 +95,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" Set Python checker with flake8 and pylint. Either must be installed in
-" default python to enable syntax checks
-let g:syntastic_python_checkers = ['flake8', 'pylint']
+" Set Python checker with pylint. Must be installed in default python to enable
+" syntax checks
+let g:syntastic_python_checkers = ['pylint']
 
 " == NERDTree settings ===============
 " Map F2 to toggle NERDTree. Resize vertical split with Ctrl-w =
