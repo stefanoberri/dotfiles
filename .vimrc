@@ -94,6 +94,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_python_pylint_args = "--py3k"
 
 " Set Python checker with pylint. Must be installed in default python to enable
 " syntax checks
