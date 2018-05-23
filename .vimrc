@@ -43,7 +43,8 @@ Plugin 'fholgado/minibufexpl.vim'
 Plugin 'scrooloose/syntastic'
 " Nerdtree
 Plugin 'scrooloose/nerdTree'
-
+" fugitive.vim
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
