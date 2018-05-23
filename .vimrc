@@ -94,11 +94,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_pylint_args = "--py3k"
+let g:syntastic_python_pylint_args = "--py3k --disable=print-statement"
 
 " Set Python checker with pylint. Must be installed in default python to enable
 " syntax checks
 let g:syntastic_python_checkers = ['pylint']
+nnoremap <leader>j :lnext<CR>
+nnoremap <leader>k :lprevious<CR>
 
 " == NERDTree settings ===============
 " Map F2 to toggle NERDTree. Resize vertical split with Ctrl-w =
@@ -207,12 +209,12 @@ set nohlsearch
 "
 " perl/R/bash/python comments: #
 " # at beginning of line
-autocmd FileType python,perl,R,sh noremap <leader># :s/^/# /<CR>
+autocmd FileType python,perl,r,sh noremap <leader># :s/^/# /<CR>
 " # before first character on line
-autocmd FileType python,perl,R,sh noremap <leader>' :s/^\(\s*\)/\1# /<CR>
+autocmd FileType python,perl,r,sh noremap <leader>' :s/^\(\s*\)/\1# /<CR>
 " now remove them
-autocmd FileType python,perl,R,sh noremap <leader>,# :s/^# //<CR>
-autocmd FileType python,perl,R,sh noremap <leader>,' :s/\(\s*\)# /\1/<CR>
+autocmd FileType python,perl,r,sh noremap <leader>,# :s/^# //<CR>
+autocmd FileType python,perl,r,sh noremap <leader>,' :s/\(\s*\)# /\1/<CR>
 
 " latex/matlab comments: --
 autocmd FileType tex,matlab noremap <leader># :s/^/% /<CR><Esc>:nohlsearch<CR>
