@@ -204,42 +204,40 @@ noremap _ :split<CR>
 " deactivate search highlighting
 set nohlsearch
 
-"" COMMENTING in a few languages (highlight in visual mode and then type the
-" combination    ,#
-"
-" perl/R/bash/python comments: #
-" # at beginning of line
-autocmd FileType python,perl,r,sh noremap <leader># :s/^/# /<CR>
-" # before first character on line
-autocmd FileType python,perl,r,sh noremap <leader>' :s/^\(\s*\)/\1# /<CR>
-" now remove them
-autocmd FileType python,perl,r,sh noremap <leader>,# :s/^# //<CR>
-autocmd FileType python,perl,r,sh noremap <leader>,' :s/\(\s*\)# /\1/<CR>
+"" COMMENTING in a few languages "
+" perl/R/bash/python comments: # at beggining of line
+noremap <leader># :s/^/# /<CR>
+noremap <leader>,# :s/^# //<CR>
 
-" latex/matlab comments: --
-autocmd FileType tex,matlab noremap <leader># :s/^/% /<CR><Esc>:nohlsearch<CR>
-autocmd FileType tex,matlab noremap <leader>,# :s/^% //<CR>
+" perl/R/bash/python comments: # before first character
+noremap <leader>' :s/^\(\s*\)/\1# /<CR>
+noremap <leader>,' :s/\(\s*\)# \(\.*\)/\1\2/<CR>
 
-" vim comments: "
-autocmd FileType vim noremap <leader># :s/^/" /<CR><Esc>:nohlsearch<CR>
-autocmd FileType vim noremap <leader>,# :s/^" //<CR>
+" latex/matlab comments: % at beggining of line
+noremap <leader>% :s/^/% /<CR><Esc>:nohlsearch<CR>
+noremap <leader>,% :s/^% //<CR>
+
+" vim comments: " at beggining of line
+noremap <leader>" :s/^/" /<CR><Esc>:nohlsearch<CR>
+noremap <leader>," :s/^" //<CR>
+
+" C/C++/C#/Java // comments
+noremap <leader>/ :s/^/\/\/ /<CR><Esc>:nohlsearch<CR>
+noremap <leader>,/ :s/^\/\/ //<CR>
+
+" c++/java BLOCK comments
+noremap <leader>* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
+noremap <leader>,* :s/^\/\* \(.*\) \*\/$/\1/<CR>
 
 " SQL comments: --
 autocmd FileType sql noremap <leader># :s/^/-- /<CR><Esc>:nohlsearch<CR>
 autocmd FileType sql noremap <leader>,# :s/^-- //<CR>
 "
-" ,/ C/C++/C#/Java // comments
-autocmd FileType c,cpp,java,javascript noremap <leader># :s/^/\/\/ /<CR><Esc>:nohlsearch<CR>
-autocmd FileType c,cpp,java,javascript noremap <leader>,# :s/^\/\/ //<CR>
 "
 " ,< HTML comment
 noremap <leader>< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
 noremap <leader>,< :s/^<!-- \(.*\) -->/\1/<CR><Esc>:nohlsearch<CR>
 "
-" c++/java BLOCK comments
-noremap <leader>* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
-noremap <leader>,* :s/^\/\* \(.*\) \*\/$/\1/<CR>
-
 " re-sync syntax highlighting
 map <leader>,<CR> <Esc>:syntax sync fromstart<CR>
 
