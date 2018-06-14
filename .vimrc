@@ -39,7 +39,7 @@ Plugin 'VundleVim/Vundle.vim'
 "
 " Mini buff Explorer
 Plugin 'fholgado/minibufexpl.vim'
-" Syntastic
+" Syntastic (:help syntastic-commands)
 Plugin 'scrooloose/syntastic'
 " Nerdtree
 Plugin 'scrooloose/nerdTree'
@@ -100,8 +100,13 @@ let g:syntastic_python_pylint_args = "--py3k --disable=print-statement"
 " Set Python checker with pylint. Must be installed in default python to enable
 " syntax checks
 let g:syntastic_python_checkers = ['pylint']
+" Do not activate syntax checking by default
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 nnoremap <leader>j :lnext<CR>
 nnoremap <leader>k :lprevious<CR>
+" Activate syntax checking with <Ctrl-w>e (need to write file to run the
+" linter. :SyntasticCheck strangely opens a window
+nnoremap <C-w>e :SyntasticToggleMode<CR>
 
 " == NERDTree settings ===============
 " Map F2 to toggle NERDTree. Resize vertical split with Ctrl-w =
@@ -112,9 +117,6 @@ silent! nnoremap <F3> :NERDTreeFind<CR><C-w>=
 
 
 " == Settings ==
-
-" Set the leader
-let mapleader = ","
 
 " quick edit .vimrc
 nnoremap <leader>ev :split $MYVIMRC<cr>
@@ -208,46 +210,46 @@ set nohlsearch
 "" COMMENTING in a few languages "
 " perl/R/bash/python comments: # at beggining of line
 noremap <leader># :s/^/# /<CR>
-noremap <leader>,# :s/^# //<CR>
+noremap <leader><leader># :s/^# //<CR>
 
 " perl/R/bash/python comments: # before first character
 noremap <leader>' :s/^\(\s*\)/\1# /<CR>
-noremap <leader>,' :s/\(\s*\)# \(\.*\)/\1\2/<CR>
+noremap <leader><leader>' :s/\(\s*\)# \(\.*\)/\1\2/<CR>
 
 " latex/matlab comments: % at beggining of line
 noremap <leader>% :s/^/% /<CR><Esc>:nohlsearch<CR>
-noremap <leader>,% :s/^% //<CR>
+noremap <leader><leader>% :s/^% //<CR>
 
 " vim comments: " at beggining of line
 noremap <leader>" :s/^/" /<CR><Esc>:nohlsearch<CR>
-noremap <leader>," :s/^" //<CR>
+noremap <leader><leader>" :s/^" //<CR>
 
 " C/C++/C#/Java // comments
 noremap <leader>/ :s/^/\/\/ /<CR><Esc>:nohlsearch<CR>
-noremap <leader>,/ :s/^\/\/ //<CR>
+noremap <leader><leader>/ :s/^\/\/ //<CR>
 
 " c++/java BLOCK comments
 noremap <leader>* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
-noremap <leader>,* :s/^\/\* \(.*\) \*\/$/\1/<CR>
+noremap <leader><leader>* :s/^\/\* \(.*\) \*\/$/\1/<CR>
 
 " SQL comments: --
 autocmd FileType sql noremap <leader># :s/^/-- /<CR><Esc>:nohlsearch<CR>
-autocmd FileType sql noremap <leader>,# :s/^-- //<CR>
+autocmd FileType sql noremap <leader><leader># :s/^-- //<CR>
 "
 "
 " ,< HTML comment
 noremap <leader>< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
-noremap <leader>,< :s/^<!-- \(.*\) -->/\1/<CR><Esc>:nohlsearch<CR>
+noremap <leader><leader>< :s/^<!-- \(.*\) -->/\1/<CR><Esc>:nohlsearch<CR>
 "
 " re-sync syntax highlighting
-map <leader>,<CR> <Esc>:syntax sync fromstart<CR>
+nnoremap <leader><leader><CR> <Esc>:syntax sync fromstart<CR>
 
 """ MOVING AROUND
 " makes hjkl also work in insert mode with ctrl
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
-inoremap <C-j> <Up>
-inoremap <C-k> <Down>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
 
 
 
@@ -277,3 +279,9 @@ command! Now   call s:InsertISODatetime()
 
 " option to set the backspace to work (delete) in cygwin
 set backspace=2
+
+
+
+
+""" Graphical settings
+set guifont=Monaco:h14
