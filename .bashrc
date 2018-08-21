@@ -21,6 +21,7 @@ sourceit $HOME/.functions
 
 # User specific environment and startup programs
 export PATH="$HOME/bin:$PATH";
+export EDITOR=vim
 
 # MacOSX has strange default colors. Change them
 # http://www.marinamele.com/2014/05/customize-colors-of-your-terminal-in-mac-os-x.html
