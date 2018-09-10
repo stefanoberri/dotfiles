@@ -20,6 +20,7 @@ files2sync="
   .tmuxStatus.sh
   .vimrc
   .ctags
+  .pylintrc
   bin/tmuxStatus
   bin/gr
   bin/prettyJSON
