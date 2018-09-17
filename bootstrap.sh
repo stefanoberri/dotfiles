@@ -19,6 +19,7 @@ files2sync="
   .tmux.conf
   .tmuxStatus.sh
   .vimrc
+  .gitconfig
   .ctags
   .pylintrc
   bin/tmuxStatus

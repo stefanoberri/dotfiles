@@ -1,0 +1,29 @@
+[include]
+    # PC/User specific configurations. Relative to location of $HOME/.gitconfig
+    path = .extragitconfig
+
+[core]
+	editor = vim
+
+[diff]
+	tool = vimdiff
+
+[difftool]
+    prompt = false
+	prompt = false
+
+[filter "lfs"]
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+
+[alias]
+# list files which have changed since REVIEW_BASE
+# (REVIEW_BASE defaults to 'master' in bashrc)
+files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
+
+# Same as above, but with a diff stat instead of just names
+# (better for interactive use)
+stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
+
