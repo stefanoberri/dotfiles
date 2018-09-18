@@ -47,6 +47,8 @@ Plugin 'scrooloose/nerdTree'
 Plugin 'tpope/vim-fugitive'
 " vim-gitgutter
 Plugin 'airblade/vim-gitgutter'
+" More modern colorscheme with solarized
+Plugin 'jez/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -190,7 +192,8 @@ set foldmethod=indent
 
 
 " set a nice colorsheme for a dark background
-colorscheme elflord
+set background=dark
+colorscheme solarized
 
 " for a bright background this would be better
 " colorscheme slate
