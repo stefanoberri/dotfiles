@@ -23,7 +23,7 @@ sourceit $HOME/.functions
 export PATH="$HOME/bin:$PATH";
 export EDITOR=vim
 # A variable used by some git aliases
-export REVIEW_BASE=master
+export REVIEW_BASE=develop
 
 # MacOSX has strange default colors. Change them
 # http://www.marinamele.com/2014/05/customize-colors-of-your-terminal-in-mac-os-x.html
