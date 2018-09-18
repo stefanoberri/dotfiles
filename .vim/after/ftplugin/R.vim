@@ -1,2 +1,1 @@
-" Remove trailing spaces on saving
-autocmd BufWritePre <buffer> Despace
+" Nothing R specific here yet
