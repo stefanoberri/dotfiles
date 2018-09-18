@@ -34,9 +34,9 @@
     # Open all files changed since REVIEW_BASE in Vim tabs
     # Then, run fugitive's :Gdiff in each tab, and finally
     # tell vim-gitgutter to show +/- for changes since REVIEW_BASE
-    reviewall = !vim -p $(git files) +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
-      
+    reviewall = !vim -c 'let g:miniBufExplAutoStart = 0' -p $(git files) +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\" +\":GitGutterEnable\"
+
     # Same as the above, except specify names of files as arguments,
     # instead of opening all files:
     # git reviewone foo.js bar.js
-    review = !vim -p +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
+    review = !vim -p +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\" +\":GitGutterEnable\"
