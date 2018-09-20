@@ -99,6 +99,9 @@ let g:easytags_dynamic_files = 1
 " == Tagbar settings  ==============
 nmap <F8> :TagbarToggle<CR>
 
+" == gitgutter settings ==
+nmap <F7> :GitGutterToggle<CR>
+
 " == Syntastic settings ==============
 "
 set statusline+=%#warningmsg#
