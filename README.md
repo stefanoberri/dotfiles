@@ -6,14 +6,13 @@ creation of a productive and coherent working environment **I like** across diff
 
 ## Deploy the configuration files
 
-After you have cloned this repository, to copy dotfiles in your `$HOME`,
-install [Vundle](https://github.com/VundleVim/Vundle.vim) and some vim plugins
-you can run 
+After you have cloned this repository, to copy dotfiles in your `$HOME`
+and install all vim plugins you can run
 
 	./bootstrap.sh
 
 If the target file already exists, nothing will happen and you will be warned
-of files that would be overwritten. You can backup them. You can then run 
+of files that would be overwritten. You can backup them. You can then run
 
 	./bootstrap.sh --force
 
@@ -28,7 +27,7 @@ unexpected behaviour might happen.
 Here a schema of how files source each other. For a comprehensive description,
 of bash behaviour see [this
 link](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html)
-	
+
 	.bash_profile
 	    |-> .profile # not currently present
 	    |-> .bashrc
@@ -55,3 +54,4 @@ and `.bashrc` is sourced
 - Other dotfiles repos
   - https://dotfiles.github.io/
   - [Mathias Bynens' dotfiles](https://github.com/mathiasbynens/dotfiles)
+  - [Vim as an IDE by Jake Zimmermanl](https://blog.jez.io/vim-as-an-ide/)
