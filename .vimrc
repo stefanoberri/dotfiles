@@ -49,6 +49,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 " More modern colorscheme with solarized
 Plugin 'jez/vim-colors-solarized'
+" Automate ctags generation
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 " tagbar to better navigate the code
 Plugin 'majutsushi/tagbar'
 " Automatically add pair quotes, parenthesis and so on...
@@ -90,7 +93,9 @@ nnoremap <C-j> :MBEbf<CR>
 " previous (historically)
 nnoremap <C-k> :MBEbb<CR>
 
-
+" == EasyTags settings ==
+set tags=./tags;
+let g:easytags_dynamic_files = 1
 " == Tagbar settings  ==============
 nmap <F8> :TagbarToggle<CR>
 
