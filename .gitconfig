@@ -19,6 +19,12 @@
     smudge = git-lfs smudge -- %f
 
 [alias]
+    # common aliases
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+
     # pretty git log
     plog = !git log --graph --oneline --abbrev-commit --decorate --all --pretty=format:\"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\"
 
@@ -39,4 +45,4 @@
     # Same as the above, except specify names of files as arguments,
     # instead of opening all files:
     # git reviewone foo.js bar.js
-    review = !vim -p +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
+    review = !vim -c 'let g:miniBufExplAutoStart = 0' -p +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
