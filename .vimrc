@@ -1,8 +1,8 @@
 " NOTES for rarely used commands
 "
 " :resize 60
-" :vertiacal resize 60
-" resize panes to specifided hight/width (60)
+" :vertical resize 60
+" resize panes to specified hight/width (60)
 "
 " if number has + or - sign (i.e. +12) it adds/subtract that to current size
 "
@@ -47,7 +47,7 @@ Plugin 'scrooloose/nerdTree'
 Plugin 'tpope/vim-fugitive'
 " vim-gitgutter
 Plugin 'airblade/vim-gitgutter'
-" More modern colorscheme with solarized
+" More modern colorschemes
 Plugin 'jez/vim-colors-solarized'
 " Automate ctags generation
 Plugin 'xolox/vim-misc'
@@ -112,7 +112,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_pylint_args = "--py3k --disable=print-statement"
+let g:syntastic_python_pylint_args = "--disable=print-statement"
 " let g:syntastic_python_pylint_rcfile='/Users/sberri/.pylintrc'
 
 " Set Python checker with pylint. Must be installed in default python to enable
@@ -158,7 +158,7 @@ set hls!
 set incsearch
 
 
-" use indents of 2 spaces. Keep these commands together as they should be
+" uses indents of 2 spaces. Keep these commands together as they should be
 " changed at once. See :help tabstop
 " tab are actually spaces (type Ctrl-V<Tab> to insert a real tab and use
 " command :retab to change all existing tab to the new style
@@ -172,7 +172,7 @@ set autoindent
 " don't make it look like there are line breaks where there aren't:
 set nowrap
 
-" normally don't automatically format `text' as it is typed, IE only do this
+" normally don't automatically format `text' as it is typed, i.e. only do this
 " with comments, at 79 characters:
 set formatoptions-=t
 set textwidth=79
@@ -208,7 +208,8 @@ set foldmethod=indent
 
 " set a nice colorsheme for a dark background
 set background=dark
-colorscheme solarized
+colorscheme elflord
+" colorscheme solarized
 
 " for a bright background this would be better
 " colorscheme slate
@@ -302,6 +303,15 @@ command! Now   call s:InsertISODatetime()
 
 " option to set the backspace to work (delete) in cygwin
 set backspace=2
+
+" Show syntax highlighting groups for word under cursor with Ctrl-Shift-p
+nmap <C-S-P> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
 
 
 """ Graphical settings
