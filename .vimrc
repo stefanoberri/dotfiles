@@ -98,6 +98,7 @@ set tags=./tags;
 let g:easytags_dynamic_files = 1
 " == Tagbar settings  ==============
 nmap <F8> :TagbarToggle<CR>
+nmap <F9> :TagbarOpen j<CR>
 
 " == gitgutter settings ==
 nmap <F7> :GitGutterToggle<CR>
@@ -141,10 +142,6 @@ nnoremap <leader>ev :split $MYVIMRC<cr>
 " quick source .vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" No more ESC key!
-inoremap jk <esc>
-" And, temporarly, disable ESC
-" inoremap <esc> <nop>
 
 " add numbers on the left
 set nu
