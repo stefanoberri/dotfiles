@@ -26,6 +26,7 @@ files2sync="
   bin/tmuxStatus
   bin/gr
   bin/prettyJSON
+  bin/docker_cleanup
   "
 
 function usage(){

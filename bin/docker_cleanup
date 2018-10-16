@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Free space used by docker removing images of not relevance (no tag)
+docker rm $(docker ps -q -f 'status=exited')
