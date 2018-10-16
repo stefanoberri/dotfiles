@@ -22,6 +22,7 @@ files2sync="
   .gitconfig
   .ctags
   .pylintrc
+  .vim/notes.vim
   bin/tmuxStatus
   bin/gr
   bin/prettyJSON
