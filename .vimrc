@@ -58,6 +58,9 @@ Plugin 'majutsushi/tagbar'
 Plugin 'Raimondi/delimitMate'
 " Distraction free markdown writing
 Plugin 'junegunn/goyo.vim'
+" Taking notes
+Plugin 'xolox/vim-notes'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
