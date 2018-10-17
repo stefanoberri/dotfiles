@@ -154,5 +154,5 @@ fi
 git config --global core.editor vim
 # set git difftool to use vimdiff, no prompting for confirmation
 git config --global diff.tool vimdiff
-git config --global --add difftool.prompt false
+git config --global --replace-all difftool.prompt false
 

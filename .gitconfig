@@ -8,10 +8,6 @@
 [diff]
 	tool = vimdiff
 
-[difftool]
-    prompt = false
-	prompt = false
-
 [filter "lfs"]
     process = git-lfs filter-process
     required = true
@@ -46,3 +42,6 @@
     # instead of opening all files:
     # git reviewone foo.js bar.js
     review = !vim -c 'let g:miniBufExplAutoStart = 0' -p +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
+
+[difftool]
+	prompt = false
