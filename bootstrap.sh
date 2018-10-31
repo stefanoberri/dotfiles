@@ -27,6 +27,7 @@ files2sync="
   bin/gr
   bin/prettyJSON
   bin/docker_cleanup
+  .config/git/ignore
   "
 
 function usage(){
@@ -100,6 +101,9 @@ function create_symlinks(){
 parse_args "$@"
 if [ ! -d $HOME/bin ]; then
   mkdir $HOME/bin
+fi
+if [ ! -d $HOME/.config/git ]; then
+  mkdir -p $HOME/.config/git
 fi
 
 for f in $files2sync; do
