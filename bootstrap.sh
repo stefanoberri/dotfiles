@@ -27,6 +27,7 @@ files2sync="
   bin/gr
   bin/prettyJSON
   bin/docker_cleanup
+  bin/notes
   .config/git/ignore
   "
 

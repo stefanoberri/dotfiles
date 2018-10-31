@@ -135,8 +135,11 @@ nnoremap <C-w>e :SyntasticToggleMode<CR>
 silent! nnoremap <F2> :NERDTreeToggle<CR><C-w>=
 " Map F3 to find file in NERDTree. Resize vertical split with Ctrl-w =
 silent! nnoremap <F3> :NERDTreeFind<CR><C-w>=
+" See dotfiles
+let NERDTreeShowHidden=1
 
-
+" == vim-notes settings ========
+let g:notes_directories = [$NOTEHOME]
 
 " == Settings ==
 
