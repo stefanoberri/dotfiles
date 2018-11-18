@@ -1,15 +1,15 @@
 " NOTES for rarely used commands
-"
+
 " :resize 60
 " :vertical resize 60
 " resize panes to specified hight/width (60)
-"
+
 " if number has + or - sign (i.e. +12) it adds/subtract that to current size
-"
+
 " Ctrl-w N+  Ctrl-w N-  Ctrl-w N>  Ctrl-w N<
 " increase horizontally, decrease horizontally, increase vertically, decrease
 " vertically the window N lines
-"
+
 " SPELLING
 " https://www.linux.com/learn/using-spell-checking-vim
 " activate spelling highlight
@@ -60,6 +60,8 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'junegunn/goyo.vim'
 " Taking notes
 Plugin 'xolox/vim-notes'
+" Comment code
+Plugin 'tpope/vim-commentary'
 
 
 " All of your Plugins must be added before the following line
@@ -229,40 +231,41 @@ noremap _ :split<CR>
 " deactivate search highlighting
 set nohlsearch
 
-"" COMMENTING in a few languages "
-" perl/R/bash/python comments: # at beggining of line
-noremap <leader># :s/^/# /<CR>
-noremap <leader><leader># :s/^# //<CR>
-
-" perl/R/bash/python comments: # before first character
-noremap <leader>' :s/^\(\s*\)/\1# /<CR>
-noremap <leader><leader>' :s/\(\s*\)# \(\.*\)/\1\2/<CR>
-
-" latex/matlab comments: % at beggining of line
-noremap <leader>% :s/^/% /<CR><Esc>:nohlsearch<CR>
-noremap <leader><leader>% :s/^% //<CR>
-
-" vim comments: " at beggining of line
-noremap <leader>" :s/^/" /<CR><Esc>:nohlsearch<CR>
-noremap <leader><leader>" :s/^" //<CR>
-
-" C/C++/C#/Java // comments
-noremap <leader>/ :s/^/\/\/ /<CR><Esc>:nohlsearch<CR>
-noremap <leader><leader>/ :s/^\/\/ //<CR>
-
-" c++/java BLOCK comments
-noremap <leader>* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
-noremap <leader><leader>* :s/^\/\* \(.*\) \*\/$/\1/<CR>
-
-" SQL comments: --
-autocmd FileType sql noremap <leader># :s/^/-- /<CR><Esc>:nohlsearch<CR>
-autocmd FileType sql noremap <leader><leader># :s/^-- //<CR>
+" "" COMMENTING in a few languages "
+" " perl/R/bash/python comments: # at beggining of line
+" noremap <leader># :s/^/# /<CR>
+" noremap <leader><leader># :s/^# //<CR>
 "
+" " perl/R/bash/python comments: # before first character
+" noremap <leader>' :s/^\(\s*\)/\1# /<CR>
+" noremap <leader><leader>' :s/\(\s*\)# \(\.*\)/\1\2/<CR>
 "
-" ,< HTML comment
-noremap <leader>< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
-noremap <leader><leader>< :s/^<!-- \(.*\) -->/\1/<CR><Esc>:nohlsearch<CR>
+" " latex/matlab comments: % at beggining of line
+" noremap <leader>% :s/^/% /<CR><Esc>:nohlsearch<CR>
+" noremap <leader><leader>% :s/^% //<CR>
 "
+" " vim comments: " at beggining of line
+" noremap <leader>" :s/^/" /<CR><Esc>:nohlsearch<CR>
+" noremap <leader><leader>" :s/^" //<CR>
+"
+" " C/C++/C#/Java // comments
+" noremap <leader>/ :s/^/\/\/ /<CR><Esc>:nohlsearch<CR>
+" noremap <leader><leader>/ :s/^\/\/ //<CR>
+"
+" " c++/java BLOCK comments
+" noremap <leader>* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
+" noremap <leader><leader>* :s/^\/\* \(.*\) \*\/$/\1/<CR>
+"
+" " SQL comments: --
+" autocmd FileType sql noremap <leader># :s/^/-- /<CR><Esc>:nohlsearch<CR>
+" autocmd FileType sql noremap <leader><leader># :s/^-- //<CR>
+" "
+" "
+" " ,< HTML comment
+" noremap <leader>< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
+" noremap <leader><leader>< :s/^<!-- \(.*\) -->/\1/<CR><Esc>:nohlsearch<CR>
+
+
 " re-sync syntax highlighting
 nnoremap <leader><leader><CR> <Esc>:syntax sync fromstart<CR>
 
