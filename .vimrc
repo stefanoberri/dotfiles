@@ -277,13 +277,6 @@ nnoremap <leader><leader><CR> <Esc>:syntax sync fromstart<CR>
 " Remove trailing spaces on saving.
 autocmd BufWritePre <buffer> Despace
 
-""" MOVING AROUND
-" makes hjkl also work in insert mode with ctrl
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-
 
 """ CUSTOM COMMANDS
 command! Spell execute "set spell spelllang=en_gb"
