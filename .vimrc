@@ -140,6 +140,8 @@ let NERDTreeShowHidden=1
 
 " == vim-notes settings ========
 let g:notes_directories = [$NOTEHOME]
+" Do not convert double quote to curly (directional)
+let g:notes_smart_quotes = 0
 
 " == Settings ==
 
