@@ -31,3 +31,8 @@ __conda_env (){
   fi
   echo $CONDA_INFO
 }
+
+empty(){
+  vim -u NONE
+}
+
