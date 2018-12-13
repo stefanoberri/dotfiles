@@ -32,6 +32,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   export LSCOLORS=exGxbxdxcxegedabagacad
 fi
 
+# use vi mode in bash
+set -o vi
+
 # to use "magic" history (letters+urrow up find last commands in history
 # starting with those letters). requires .inputrc
 shopt -s histappend
