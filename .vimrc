@@ -198,9 +198,13 @@ au BufNewFile,BufRead *.cwl set filetype=yaml
 " eb files have same syntax highlightinh than py files
 au BufNewFile,BufRead *.eb set filetype=python
 
-" set search case insensitive (to put it back case sensitive type
-" set noignorecase
-set ignorecase
+" set search case sensitive
+set noignorecase
+" to put it back case sensitive type
+" set ignorecase
+
+" give special character
+set listchars=eol:$,tab:¬·,trail:~,extends:>,precedes:<,space:␣
 
 " uses syntax to perform folding (zc and zo to Close or Open folding
 " here for more details on folding
