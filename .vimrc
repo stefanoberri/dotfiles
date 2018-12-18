@@ -216,6 +216,8 @@ set listchars=eol:$,tab:¬·,trail:~,extends:>,precedes:<,space:␣
 " set foldmethod=syntax
 " if you indent correctly the following migh be more useful
 set foldmethod=indent
+" do not open files already folded
+set nofoldenable
 
 
 " set a nice colorsheme for a dark background
