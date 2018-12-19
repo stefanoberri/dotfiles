@@ -204,7 +204,7 @@ set noignorecase
 " set ignorecase
 
 " give special character
-set listchars=eol:$,tab:¬·,trail:~,extends:>,precedes:<,space:␣
+set listchars=eol:$,tab:¬·,trail:␣,extends:>,precedes:<
 
 " uses syntax to perform folding (zc and zo to Close or Open folding
 " here for more details on folding
