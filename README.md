@@ -1,5 +1,5 @@
 <blockquote class="twitter-tweet" data-lang="en-gb"><p lang="en" dir="ltr">No *you* have less friends than dotfiles.</p>&mdash; I Am Devloper (@iamdevloper) <a href="https://twitter.com/iamdevloper/status/1055033406449426432?ref_src=twsrc%5Etfw">24 October 2018</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 # Set up working environments
 
 This repository contains dotfiles, other configurations as well as little
