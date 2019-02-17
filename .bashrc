@@ -17,6 +17,8 @@ sourceit $HOME/.aliases
 sourceit $HOME/.bash_prompt
 # source useful functions
 sourceit $HOME/.functions
+# autocompletion for git
+sourceit $HOME/.git-completion.bash
 # export LANG=en_US.UTF-8
 
 # User specific environment and startup programs
