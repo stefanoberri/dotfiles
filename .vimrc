@@ -36,15 +36,12 @@ call vundle#begin()
 "
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-"
 " Mini buff Explorer
 Plugin 'fholgado/minibufexpl.vim'
 " Syntastic (:help syntastic-commands)
 Plugin 'scrooloose/syntastic'
 " Nerdtree
 Plugin 'scrooloose/nerdTree'
-" fugitive.vim
-Plugin 'tpope/vim-fugitive'
 " vim-gitgutter
 Plugin 'airblade/vim-gitgutter'
 " More modern colorschemes
@@ -58,10 +55,14 @@ Plugin 'majutsushi/tagbar'
 Plugin 'Raimondi/delimitMate'
 " Taking notes
 Plugin 'xolox/vim-notes'
+" fugitive.vim
+Plugin 'tpope/vim-fugitive'
 " Comment code
 Plugin 'tpope/vim-commentary'
 " Surround text with paretheses, quotes, tags and so on
 Plugin 'tpope/vim-surround'
+" Intelligent substitutions
+Plugin 'tpope/vim-abolish'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
