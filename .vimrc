@@ -56,8 +56,6 @@ Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
 " Automatically add pair quotes, parenthesis and so on...
 Plugin 'Raimondi/delimitMate'
-" Distraction free markdown writing
-Plugin 'junegunn/goyo.vim'
 " Taking notes
 Plugin 'xolox/vim-notes'
 " Comment code
