@@ -161,3 +161,7 @@ git config --global core.editor vim
 git config --global diff.tool vimdiff
 git config --global --replace-all difftool.prompt false
 
+
+## Get git autocompletion script
+wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash \
+  --output-document $HOME/.git-completion.bash
