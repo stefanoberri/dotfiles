@@ -55,6 +55,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'Raimondi/delimitMate'
 " Taking notes
 Plugin 'xolox/vim-notes'
+" Black, a non compromising python code formatter
+Plugin 'ambv/black'
 " fugitive.vim
 Plugin 'tpope/vim-fugitive'
 " Comment code
@@ -85,6 +87,8 @@ filetype plugin on
 "
 " ==== PLUGIN SETTINGS =============
 "
+" == Black ==============
+let g:black_linelength=80
 " == MiniBufExpl settings ==============
 "
 " Mappings to move between buffers when using minibufexpl
