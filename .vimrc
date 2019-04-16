@@ -63,6 +63,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 " Surround text with paretheses, quotes, tags and so on
 Plugin 'tpope/vim-surround'
+" The . command works with plugins too
+Plugin 'tpope/vim-repeat'
 " Intelligent substitutions
 Plugin 'tpope/vim-abolish'
 
