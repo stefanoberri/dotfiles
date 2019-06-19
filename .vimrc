@@ -295,7 +295,7 @@ command! Spell execute "set spell spelllang=en_gb"
 command! Nospell execute "set nospell"
 command! CB execute ":MBEbd"
 
-command! Despace execute "%s/\\s\\+$//ge"
+command! Despace execute "%s/ \\+$//ge"
 """ INSERT DATE
 " from http://henry.precheur.org/scratchpad/
 function! s:InsertISODate()
