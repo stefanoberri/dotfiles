@@ -51,13 +51,11 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 " tagbar to better navigate the code
 Plugin 'majutsushi/tagbar'
-" Automatically add pair quotes, parenthesis and so on...
-Plugin 'Raimondi/delimitMate'
 " Taking notes
 Plugin 'xolox/vim-notes'
 " Black, a non compromising python code formatter
 Plugin 'ambv/black'
-" fugitive.vim
+" fugitive.vim - git integration
 Plugin 'tpope/vim-fugitive'
 " Comment code
 Plugin 'tpope/vim-commentary'
