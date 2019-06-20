@@ -47,14 +47,19 @@ Plugin 'airblade/vim-gitgutter'
 " More modern colorschemes
 Plugin 'jez/vim-colors-solarized'
 " Automate ctags generation
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+if executable("ctags")
+  Plugin 'xolox/vim-misc'
+  Plugin 'xolox/vim-easytags'
+endif
 " tagbar to better navigate the code
 Plugin 'majutsushi/tagbar'
 " Taking notes
 Plugin 'xolox/vim-notes'
-" Black, a non compromising python code formatter
-Plugin 'ambv/black'
+" Black, a non compromising python code formatter. Only activate if
+" requirements are met
+if v:version > 700 && has('python3')
+  Plugin 'ambv/black'
+endif
 " fugitive.vim - git integration
 Plugin 'tpope/vim-fugitive'
 " Comment code
