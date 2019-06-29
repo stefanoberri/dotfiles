@@ -164,6 +164,8 @@ set ruler
 set hls!
 " but highlight the first match
 set incsearch
+" deactivate search highlighting
+set nohlsearch
 
 
 " uses indents of 2 spaces. Keep these commands together as they should be
@@ -199,7 +201,10 @@ au BufNewFile,BufRead *.cwl set filetype=yaml
 au BufNewFile,BufRead *.eb set filetype=python
 
 " set search case sensitive
-set noignorecase
+" set noignorecase
+" set search case insensitive untill a capital letter is used. still use \c
+" and \C for forcing case insesitive or case sensitive searches
+set smartcase
 " to put it back case sensitive type
 " set ignorecase
 
@@ -240,8 +245,6 @@ set hidden
 noremap \| :vsplit<CR>
 noremap _ :split<CR>
 
-" deactivate search highlighting
-set nohlsearch
 
 " "" COMMENTING in a few languages "
 " " perl/R/bash/python comments: # at beggining of line
