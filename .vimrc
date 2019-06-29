@@ -36,34 +36,40 @@ call vundle#begin()
 "
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-"
 " Mini buff Explorer
 Plugin 'fholgado/minibufexpl.vim'
 " Syntastic (:help syntastic-commands)
 Plugin 'scrooloose/syntastic'
 " Nerdtree
 Plugin 'scrooloose/nerdTree'
-" fugitive.vim
-Plugin 'tpope/vim-fugitive'
 " vim-gitgutter
 Plugin 'airblade/vim-gitgutter'
 " More modern colorschemes
 Plugin 'jez/vim-colors-solarized'
 " Automate ctags generation
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+if executable("ctags")
+  Plugin 'xolox/vim-misc'
+  Plugin 'xolox/vim-easytags'
+endif
 " tagbar to better navigate the code
 Plugin 'majutsushi/tagbar'
-" Automatically add pair quotes, parenthesis and so on...
-Plugin 'Raimondi/delimitMate'
-" Distraction free markdown writing
-Plugin 'junegunn/goyo.vim'
 " Taking notes
 Plugin 'xolox/vim-notes'
+" Black, a non compromising python code formatter. Only activate if
+" requirements are met
+if v:version > 700 && has('python3')
+  Plugin 'ambv/black'
+endif
+" fugitive.vim - git integration
+Plugin 'tpope/vim-fugitive'
 " Comment code
 Plugin 'tpope/vim-commentary'
 " Surround text with paretheses, quotes, tags and so on
 Plugin 'tpope/vim-surround'
+" The . command works with plugins too
+Plugin 'tpope/vim-repeat'
+" Intelligent substitutions
+Plugin 'tpope/vim-abolish'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -86,6 +92,8 @@ filetype plugin on
 "
 " ==== PLUGIN SETTINGS =============
 "
+" == Black ==============
+let g:black_linelength=80
 " == MiniBufExpl settings ==============
 "
 " Mappings to move between buffers when using minibufexpl
@@ -293,7 +301,7 @@ command! Spell execute "set spell spelllang=en_gb"
 command! Nospell execute "set nospell"
 command! CB execute ":MBEbd"
 
-command! Despace execute "%s/\\s\\+$//ge"
+command! Despace execute "%s/ \\+$//ge"
 """ INSERT DATE
 " from http://henry.precheur.org/scratchpad/
 function! s:InsertISODate()
