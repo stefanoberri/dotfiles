@@ -57,7 +57,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'xolox/vim-notes'
 " Black, a non compromising python code formatter. Only activate if
 " requirements are met
-if v:version > 700 && has('python3')
+if v:version > 700 && has('python3') && executable("black")
   Plugin 'ambv/black'
 endif
 " fugitive.vim - git integration
