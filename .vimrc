@@ -175,12 +175,12 @@ set incsearch
 
 
 " uses indents of 2 spaces. Keep these commands together as they should be
-" changed at once. See :help tabstop
+" changed at once. See :help tabstop for suggestion of working combinations
 " tab are actually spaces (type Ctrl-V<Tab> to insert a real tab and use
 " command :retab to change all existing tab to the new style
 " to remove the tab conversion enter ':set noexpandtab'
 
-set shiftwidth=2 softtabstop=2 tabstop=8 noexpandtab
+set shiftwidth=2 softtabstop=2 tabstop=2 expandtab
 " set shiftround
 
 set autoindent
