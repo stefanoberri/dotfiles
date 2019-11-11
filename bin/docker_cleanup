@@ -6,3 +6,8 @@ docker rm $(docker ps -q -f 'status=exited')
 # remove untagged images
 # https://github.com/moby/moby/blob/10c0af083544460a2ddc2218f37dc24a077f7d90/docs/reference/commandline/images.md#filtering
 docker rmi -f $(docker images -q -a -f dangling=true)
+
+# remove orphaned volumes
+https://stackoverflow.com/questions/30604846/docker-error-no-space-left-on-device
+docker volume rm $(docker volume ls -qf dangling=true)
+
