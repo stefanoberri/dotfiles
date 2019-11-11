@@ -207,6 +207,9 @@ filetype on
 au BufNewFile,BufRead *.cwl set filetype=yaml
 " eb files have same syntax highlightinh than py files
 au BufNewFile,BufRead *.eb set filetype=python
+" nf and config files are groovy files
+au BufNewFile,BufRead *.nf set filetype=groovy
+au BufNewFile,BufRead *.config set filetype=groovy
 
 " set search case sensitive
 " set noignorecase
