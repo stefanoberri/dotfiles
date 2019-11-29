@@ -162,8 +162,9 @@ nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 
-" add numbers on the left
+" add number and relative numbers on the left
 set nu
+set relativenumber " disable with :set nornu
 
 " add ruler with information about cursor position
 set ruler
