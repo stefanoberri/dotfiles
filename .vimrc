@@ -70,6 +70,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 " Intelligent substitutions
 Plugin 'tpope/vim-abolish'
+" Add the status line
+Plugin 'Lokaltog/vim-powerline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -153,6 +155,11 @@ let NERDTreeShowHidden=1
 let g:notes_directories = [$NOTEHOME]
 " Do not convert double quote to curly (directional)
 let g:notes_smart_quotes = 0
+
+
+" == Powerline settings ====
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show Unicode glyphs
 
 " == Settings ==
 
