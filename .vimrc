@@ -264,6 +264,11 @@ set hidden
 noremap \| :vsplit<CR>
 noremap _ :split<CR>
 
+" Disable arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 
 " "" COMMENTING in a few languages "
 " " perl/R/bash/python comments: # at beggining of line
