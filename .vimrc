@@ -160,6 +160,15 @@ let g:notes_smart_quotes = 0
 " == Powerline settings ====
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
+" suggestions to make it work on iTerm2
+" https://coderwall.com/p/yiot4q/setup-vim-powerline-and-iterm2-on-mac-os-x
+set guifont=Inconsolata\ for\ Powerline:h15
+let g:Powerline_symbols = 'fancy'
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
+set termencoding=utf-8
+
 
 " == Settings ==
 
