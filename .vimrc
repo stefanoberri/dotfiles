@@ -36,8 +36,6 @@ call vundle#begin()
 "
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-" Mini buff Explorer
-Plugin 'fholgado/minibufexpl.vim'
 " Syntastic (:help syntastic-commands)
 Plugin 'scrooloose/syntastic'
 " Nerdtree
@@ -71,7 +69,8 @@ Plugin 'tpope/vim-repeat'
 " Intelligent substitutions
 Plugin 'tpope/vim-abolish'
 " Add the status line
-Plugin 'Lokaltog/vim-powerline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -96,18 +95,16 @@ filetype plugin on
 "
 " == Black ==============
 let g:black_linelength=80
-" == MiniBufExpl settings ==============
-"
-" Mappings to move between buffers when using minibufexpl
-" https://github.com/fholgado/minibufexpl.vim
-" next (numerically)
-nnoremap <C-l> :MBEbn<CR>
-" previous (numerically)
-nnoremap <C-h> :MBEbp<CR>
-" next (historically)
-nnoremap <C-j> :MBEbf<CR>
-" previous (historically)
-nnoremap <C-k> :MBEbb<CR>
+
+" Move across buffers
+" next buffer
+nnoremap <C-l> :bn<CR>
+" previous buffer
+nnoremap <C-h> :bp<CR>
+" first buffer
+nnoremap <C-j> :bf<CR>
+" last buffer
+nnoremap <C-k> :blast<CR>
 
 " == EasyTags settings ==
 set tags=./tags;
@@ -156,18 +153,9 @@ let g:notes_directories = [$NOTEHOME]
 " Do not convert double quote to curly (directional)
 let g:notes_smart_quotes = 0
 
-
-" == Powerline settings ====
-set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show Unicode glyphs
-" suggestions to make it work on iTerm2
-" https://coderwall.com/p/yiot4q/setup-vim-powerline-and-iterm2-on-mac-os-x
-set guifont=Inconsolata\ for\ Powerline:h15
-let g:Powerline_symbols = 'fancy'
-set t_Co=256
-set fillchars+=stl:\ ,stlnc:\
-set term=xterm-256color
-set termencoding=utf-8
+" Airline settings
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='bubblegum'
 
 
 " == Settings ==
@@ -256,7 +244,6 @@ set nofoldenable
 " set a nice colorsheme for a dark background
 set background=dark
 colorscheme elflord
-" colorscheme solarized
 
 " for a bright background this would be better
 " colorscheme slate
@@ -278,41 +265,6 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
-
-" "" COMMENTING in a few languages "
-" " perl/R/bash/python comments: # at beggining of line
-" noremap <leader># :s/^/# /<CR>
-" noremap <leader><leader># :s/^# //<CR>
-"
-" " perl/R/bash/python comments: # before first character
-" noremap <leader>' :s/^\(\s*\)/\1# /<CR>
-" noremap <leader><leader>' :s/\(\s*\)# \(\.*\)/\1\2/<CR>
-"
-" " latex/matlab comments: % at beggining of line
-" noremap <leader>% :s/^/% /<CR><Esc>:nohlsearch<CR>
-" noremap <leader><leader>% :s/^% //<CR>
-"
-" " vim comments: " at beggining of line
-" noremap <leader>" :s/^/" /<CR><Esc>:nohlsearch<CR>
-" noremap <leader><leader>" :s/^" //<CR>
-"
-" " C/C++/C#/Java // comments
-" noremap <leader>/ :s/^/\/\/ /<CR><Esc>:nohlsearch<CR>
-" noremap <leader><leader>/ :s/^\/\/ //<CR>
-"
-" " c++/java BLOCK comments
-" noremap <leader>* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
-" noremap <leader><leader>* :s/^\/\* \(.*\) \*\/$/\1/<CR>
-"
-" " SQL comments: --
-" autocmd FileType sql noremap <leader># :s/^/-- /<CR><Esc>:nohlsearch<CR>
-" autocmd FileType sql noremap <leader><leader># :s/^-- //<CR>
-" "
-" "
-" " ,< HTML comment
-" noremap <leader>< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
-" noremap <leader><leader>< :s/^<!-- \(.*\) -->/\1/<CR><Esc>:nohlsearch<CR>
-
 
 " re-sync syntax highlighting
 nnoremap <leader><leader><CR> <Esc>:syntax sync fromstart<CR>
