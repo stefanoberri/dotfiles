@@ -9,14 +9,14 @@ force=0
 files2sync="
   .functions
   .name
-  .bashrc 
+  .bashrc
   .bash_profile
   .bash_prompt
   .aliases
   .profile
-  .inputrc 
+  .inputrc
   .extrarc
-  .tmux.conf 
+  .tmux.conf
   .tmuxStatus.sh
   .vimrc
   bin/tmuxStatus
@@ -34,7 +34,7 @@ function usage(){
   echo ""
   echo "--force, -f:  Replace existing target files with symlinks"
   echo "--help, -h:   Show this help and exit"
-} 
+}
 
 function parse_args(){
   # set -gt to the number of required arguments required
@@ -97,9 +97,9 @@ function create_symlinks(){
 
 ## MAIN ##
 
-parse_args "$@" 
+parse_args "$@"
 if [ ! -d $HOME/bin ]; then
-  mkdir $HOME/bin 
+  mkdir $HOME/bin
 fi
 any_exists $files2sync # set variable $exists
 if [ "$exists" == "0" -o "$force" == "1" ]; then
@@ -109,6 +109,22 @@ else
   echo "use --force to override"
 fi
 
-
-
+# Install Vundle (requires git)
+VUNDLE=$HOME/.vim/bundle/Vundle.vim
+# reactivate set e or the next command will stop the script if there is no git
+set +e
+which git > /dev/null
+GIT_MISSING=$?
+# go back to safety
+set -e
+if [ $GIT_MISSING -eq 0 ]; then
+  if [ -d $VUNDLE ]; then
+    echo "Vundle already available in $VUNDLE"
+  else
+    git clone https://github.com/VundleVim/Vundle.vim.git $VUNDLE
+    vim +PluginInstall +qall
+  fi
+else
+  echo "git not available. Skipping Vundle installation"
+fi
 
