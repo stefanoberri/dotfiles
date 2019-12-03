@@ -1,0 +1,9 @@
+# User and machine specific configuration for bash
+# This file is not automatically deployed, but needs to be copied in the $HOME
+# directory and renamed with a trailing dot
+userColor="purple"
+hostColor="blue"
+fsColor="green"
+
+# where notes are saved
+export NOTEHOME="$HOME/notes"

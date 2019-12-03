@@ -12,6 +12,8 @@ else # macOS `ls`
   export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
 fi
 
+alias tmux="TERM=screen-256color-bce tmux"
+
 # colorful ls
 alias ls="ls ${colorflag}"
 alias l="ls -lrt"

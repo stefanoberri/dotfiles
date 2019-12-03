@@ -1,34 +1,44 @@
+<blockquote class="twitter-tweet" data-lang="en-gb"><p lang="en" dir="ltr">No *you* have less friends than dotfiles.</p>&mdash; I Am Devloper (@iamdevloper) <a href="https://twitter.com/iamdevloper/status/1055033406449426432?ref_src=twsrc%5Etfw">24 October 2018</a></blockquote>
+
 # Set up working environments
 
-This repository contains dotfiles as well as little scripts to facilitate the
-creation of a productive and coherent working environment **I like** across different
-\*nix machines. My preferences might not suite everybody :)
+This repository contains dotfiles, other configurations as well as little
+scripts to automate the creation of a productive and coherent working
+environment **I like** across different \*nix machines. My preferences might
+not suite everybody :)
 
 ## Deploy the configuration files
 
-After you have cloned this repository, to copy dotfiles in your `$HOME`,
-install [Vundle](https://github.com/VundleVim/Vundle.vim) and some vim plugins
-you can run 
+After you have cloned this repository, to make dotfiles available in your `$HOME`
+and install all vim plugins you can run
 
 	./bootstrap.sh
 
 If the target file already exists, nothing will happen and you will be warned
-of files that would be overwritten. You can backup them. You can then run 
+of files that would be overwritten. You can backup them. You can then run
 
 	./bootstrap.sh --force
 
 The deployment simply creates symbolic links to files in this folder and
-install vim plugins in `$HOME/.vim/bundle`. That way, if you edit your
-`~/.bashrc` file, you will actually edit a file in the git repository and that
-change can easily be tracked. Also, you could get fancy and have branches, but
-unexpected behaviour might happen.
+install vim plugins in `$HOME/.vim/bundle`. That way, if you edit, for
+instance, your `~/.bashrc` file, you will actually edit a file in the git
+repository and that change can easily be tracked.
+
+### Machine and user specific settings
+
+Some settings are machine specific or user specific and should not be kept in
+sync on git. Those files are named `extra*` and need to be manually __copied__
+to the home directory with a leading dot (i.e. `extrarc` renamed as
+`$HOME/.extrarc`), edited to reflect user or machine settings and not tracked.
+
+# Further reading
 
 ## Bash source order
 
 Here a schema of how files source each other. For a comprehensive description,
 of bash behaviour see [this
 link](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html)
-	
+
 	.bash_profile
 	    |-> .profile # not currently present
 	    |-> .bashrc
@@ -55,3 +65,4 @@ and `.bashrc` is sourced
 - Other dotfiles repos
   - https://dotfiles.github.io/
   - [Mathias Bynens' dotfiles](https://github.com/mathiasbynens/dotfiles)
+  - [Vim as an IDE by Jake Zimmermanl](https://blog.jez.io/vim-as-an-ide/)
