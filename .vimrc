@@ -154,6 +154,7 @@ let g:notes_directories = [$NOTEHOME]
 let g:notes_smart_quotes = 0
 
 " Airline settings
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='bubblegum'
 
