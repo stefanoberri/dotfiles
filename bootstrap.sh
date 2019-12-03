@@ -19,7 +19,16 @@ files2sync="
   .tmux.conf
   .tmuxStatus.sh
   .vimrc
+  .gitconfig
+  .ctags
+  .pylintrc
+  .vim/notes.vim
   bin/tmuxStatus
+  bin/gr
+  bin/prettyJSON
+  bin/docker_cleanup
+  bin/notes
+  .config/git/ignore
   "
 
 function usage(){
@@ -73,23 +82,16 @@ function any_exists(){
   done
 }
 
-function report_existing(){
-  for f in "$@"; do
-    if [ -f $HOME/$f ]; then
-      echo "file $HOME/$f already exists"
-    fi
-  done
-}
-
 function create_symlinks(){
   for f in "$@"; do
     TARGET=$HOME/$f
     SOURCE=$PWD/$f
     if [ -e $SOURCE ]; then
       if [ -e $TARGET ]; then
+	echo "Removing $TARGET..."
         rm $TARGET
       fi
-      TARGETDIR=$(dirname $TARGET)
+      echo "Creating link from $TARGET to $SOURCE ..."
       ln -s $SOURCE $TARGET
     fi
   done
@@ -101,13 +103,36 @@ parse_args "$@"
 if [ ! -d $HOME/bin ]; then
   mkdir $HOME/bin
 fi
-any_exists $files2sync # set variable $exists
-if [ "$exists" == "0" -o "$force" == "1" ]; then
-  create_symlinks $files2sync
-else
-  report_existing $files2sync
-  echo "use --force to override"
+if [ ! -d $HOME/.config/git ]; then
+  mkdir -p $HOME/.config/git
 fi
+
+for f in $files2sync; do
+  any_exists $f # set variable $exists
+  if [ "$exists" == "0" -o "$force" == "1" ]; then
+    create_symlinks $f
+  else
+    echo "File $HOME/$f already exists. Use --force to override"
+  fi
+done
+
+# Install files to overrule the settings after loading the global plugin
+# see http://vimdoc.sourceforge.net/htmldoc/filetype.html#ftplugin-overrule
+FTAFTER=$HOME/.vim/after/ftplugin
+if [ ! -d $FTAFTER ]; then
+  mkdir -p $FTAFTER
+fi
+for f in `ls .vim/after/ftplugin/*.vim`; do
+  any_exists $f # set variable $exists
+  if [ "$exists" == "0" -o "$force" == "1" ]; then
+    create_symlinks $f
+  else
+    echo "File $HOME/$f already exists. Use --force to override"
+  fi
+
+done
+
+
 
 # Install Vundle (requires git)
 VUNDLE=$HOME/.vim/bundle/Vundle.vim
@@ -128,3 +153,15 @@ else
   echo "git not available. Skipping Vundle installation"
 fi
 
+
+## Git config ------------------
+# set vim as default editor for git
+git config --global core.editor vim
+# set git difftool to use vimdiff, no prompting for confirmation
+git config --global diff.tool vimdiff
+git config --global --replace-all difftool.prompt false
+
+
+## Get git autocompletion script
+wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash \
+  --output-document $HOME/.git-completion.bash

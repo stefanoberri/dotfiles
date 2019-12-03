@@ -42,7 +42,7 @@ else
 fi
 
 # color clue about user
-# set userColor to a color name in ~/.extrarc 
+# set userColor to a color name in ~/.extrarc
 if [ -n ${!userColor} ]; then
   UC=${!userColor}
 else
@@ -56,7 +56,7 @@ fi
 
 
 # color clue about filesystem (usually the physcal location)
-# set fsColor to a color name in ~/.extrarc 
+# set fsColor to a color name in ~/.extrarc
 if [ -n ${!fsColor} ]; then
   color=${!fsColor}
 else
@@ -68,7 +68,7 @@ fi
 divs=${lightgrey}
 repo=${yellow}
 modified=${red}
-staged=${green}
+staged=${darkgreen}
 
 # conda virtual environemnt name can be displayed in the prompt. Normally, this
 # happen automatically and is prepended at the very beginning. To have control,

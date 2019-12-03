@@ -1,0 +1,4 @@
+#!/bin/bash
+cmd="cd $NOTEHOME && vim -u $HOME/.vim/notes.vim"
+echo $cmd
+eval $cmd

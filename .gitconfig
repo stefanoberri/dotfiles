@@ -1,0 +1,47 @@
+[include]
+    # PC/User specific configurations. Relative to location of $HOME/.gitconfig
+    path = .extragitconfig
+
+[core]
+	editor = vim
+
+[diff]
+	tool = vimdiff
+
+[filter "lfs"]
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+
+[alias]
+    # common aliases
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+
+    # pretty git log
+    plog = !git log --pretty=format:\"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\" --decorate --graph
+
+    # list files which have changed since REVIEW_BASE
+    # (REVIEW_BASE defaults to 'master' in bashrc)
+    files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
+
+    # Same as above, but with a diff stat instead of just names
+    # (better for interactive use)
+    stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
+
+
+    # Open all files changed since REVIEW_BASE in Vim tabs
+    # Then, run fugitive's :Gdiff in each tab, and finally
+    # tell vim-gitgutter to show +/- for changes since REVIEW_BASE
+    reviewall = !vim -c 'let g:miniBufExplAutoStart = 0' -p $(git files) +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
+
+    # Same as the above, except specify names of files as arguments,
+    # instead of opening all files:
+    # git reviewone foo.js bar.js
+    review = !vim -c 'let g:miniBufExplAutoStart = 0' -p +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
+
+[difftool]
+	prompt = false

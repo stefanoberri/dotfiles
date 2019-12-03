@@ -1,15 +1,15 @@
 " NOTES for rarely used commands
-"
+
 " :resize 60
-" :vertiacal resize 60
-" resize panes to specifided hight/width (60)
-"
+" :vertical resize 60
+" resize panes to specified hight/width (60)
+
 " if number has + or - sign (i.e. +12) it adds/subtract that to current size
-"
+
 " Ctrl-w N+  Ctrl-w N-  Ctrl-w N>  Ctrl-w N<
 " increase horizontally, decrease horizontally, increase vertically, decrease
 " vertically the window N lines
-"
+
 " SPELLING
 " https://www.linux.com/learn/using-spell-checking-vim
 " activate spelling highlight
@@ -36,26 +36,42 @@ call vundle#begin()
 "
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-"
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'vim-syntastic/syntastic'
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-"
+" Syntastic (:help syntastic-commands)
+Plugin 'scrooloose/syntastic'
+" Nerdtree
+Plugin 'scrooloose/nerdTree'
+" vim-gitgutter
+Plugin 'airblade/vim-gitgutter'
+" More modern colorschemes
+Plugin 'jez/vim-colors-solarized'
+" Automate ctags generation
+if executable("ctags")
+  Plugin 'xolox/vim-misc'
+  Plugin 'xolox/vim-easytags'
+endif
+" tagbar to better navigate the code
+Plugin 'majutsushi/tagbar'
+" Taking notes
+Plugin 'xolox/vim-notes'
+" Black, a non compromising python code formatter. Only activate if
+" requirements are met
+if v:version > 700 && has('python3')
+  Plugin 'ambv/black'
+endif
+" fugitive.vim - git integration
+Plugin 'tpope/vim-fugitive'
+" Comment code
+Plugin 'tpope/vim-commentary'
+" Surround text with paretheses, quotes, tags and so on
+Plugin 'tpope/vim-surround'
+" The . command works with plugins too
+Plugin 'tpope/vim-repeat'
+" Intelligent substitutions
+Plugin 'tpope/vim-abolish'
+" Add the status line
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " filetype plugin indent on    " required
@@ -72,28 +88,106 @@ filetype plugin on
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
+" To install from command line: vim +PluginInstall +qall
 " End of Vundle ------------------
+"
+" ==== PLUGIN SETTINGS =============
+"
+" == Black ==============
+let g:black_linelength=80
+
+" Move across buffers
+" next buffer
+nnoremap <C-l> :bn<CR>
+" previous buffer
+nnoremap <C-h> :bp<CR>
+" first buffer
+nnoremap <C-j> :bf<CR>
+" last buffer
+nnoremap <C-k> :blast<CR>
+
+" == EasyTags settings ==
+set tags=./tags;
+let g:easytags_dynamic_files = 1
+" == Tagbar settings  ==============
+nmap <F8> :TagbarToggle<CR>
+nmap <F9> :TagbarOpen j<CR>
+
+" == gitgutter settings ==
+nmap <F7> :GitGutterToggle<CR>
+
+" == Syntastic settings ==============
+"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_pylint_args = "--disable=print-statement"
+" let g:syntastic_python_pylint_rcfile='/Users/sberri/.pylintrc'
+
+" Set Python checker with pylint. Must be installed in default python to enable
+" syntax checks
+let g:syntastic_python_checkers = ['pylint']
+" Do not activate syntax checking by default
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <leader>j :lnext<CR>
+nnoremap <leader>k :lprevious<CR>
+" Activate syntax checking with <Ctrl-w>e (need to write file to run the
+" linter. :SyntasticCheck strangely opens a window
+nnoremap <C-w>e :SyntasticToggleMode<CR>
+
+" == NERDTree settings ===============
+" Map F2 to toggle NERDTree. Resize vertical split with Ctrl-w =
+silent! nnoremap <F2> :NERDTreeToggle<CR><C-w>=
+" Map F3 to find file in NERDTree. Resize vertical split with Ctrl-w =
+silent! nnoremap <F3> :NERDTreeFind<CR><C-w>=
+" See dotfiles
+let NERDTreeShowHidden=1
+
+" == vim-notes settings ========
+let g:notes_directories = [$NOTEHOME]
+" Do not convert double quote to curly (directional)
+let g:notes_smart_quotes = 0
+
+" Airline settings
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='bubblegum'
 
 
+" == Settings ==
 
-" add numbers on the left
+" quick edit .vimrc
+nnoremap <leader>ev :split $MYVIMRC<cr>
+" quick source .vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+
+" add number and relative numbers on the left
 set nu
+set relativenumber " disable with :set nornu
 
 " add ruler with information about cursor position
 set ruler
 
 " don't highlight after searches
 set hls!
+" but highlight the first match
+set incsearch
+" deactivate search highlighting
+set nohlsearch
 
 
-" use indents of 2 spaces. Keep these commands together as they should be
-" changed at once. See :help tabstop
+" uses indents of 2 spaces. Keep these commands together as they should be
+" changed at once. See :help tabstop for suggestion of working combinations
 " tab are actually spaces (type Ctrl-V<Tab> to insert a real tab and use
 " command :retab to change all existing tab to the new style
 " to remove the tab conversion enter ':set noexpandtab'
 
-set shiftwidth=2 softtabstop=2 tabstop=8 noexpandtab
+set shiftwidth=2 softtabstop=2 tabstop=2 expandtab
 " set shiftround
 
 set autoindent
@@ -101,7 +195,7 @@ set autoindent
 " don't make it look like there are line breaks where there aren't:
 set nowrap
 
-" normally don't automatically format `text' as it is typed, IE only do this
+" normally don't automatically format `text' as it is typed, i.e. only do this
 " with comments, at 79 characters:
 set formatoptions-=t
 set textwidth=79
@@ -118,10 +212,20 @@ filetype on
 au BufNewFile,BufRead *.cwl set filetype=yaml
 " eb files have same syntax highlightinh than py files
 au BufNewFile,BufRead *.eb set filetype=python
+" nf and config files are groovy files
+au BufNewFile,BufRead *.nf set filetype=groovy
+au BufNewFile,BufRead *.config set filetype=groovy
 
-" set search case insensitive (to put it back case sensitive type
+" set search case sensitive
 " set noignorecase
-set ignorecase
+" set search case insensitive untill a capital letter is used. still use \c
+" and \C for forcing case insesitive or case sensitive searches
+set smartcase
+" to put it back case sensitive type
+" set ignorecase
+
+" give special character
+set listchars=eol:$,tab:¬·,trail:␣,extends:>,precedes:<
 
 " uses syntax to perform folding (zc and zo to Close or Open folding
 " here for more details on folding
@@ -133,21 +237,18 @@ set ignorecase
 " set foldmethod=syntax
 " if you indent correctly the following migh be more useful
 set foldmethod=indent
+" do not open files already folded
+set nofoldenable
 
 
 " set a nice colorsheme for a dark background
+set background=dark
 colorscheme elflord
-" a slighly modified elflord  colorscheme
-" colorscheme stefano
-" dowloaded from
-" https://bitbucket.org/jasonwryan/centurion/src/aec27bb5dab4/.vim/colors?at=default
-" colorscheme miro8
 
 " for a bright background this would be better
 " colorscheme slate
 
 " Activate syntax autocpmpletion (Ctrl-n)
-filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
 " Allow hidden buffers
@@ -155,97 +256,59 @@ set omnifunc=syntaxcomplete#Complete
 " displayed in a window.
 set hidden
 
-" Mappings to move between buffers when using minibufexpl
-" https://github.com/fholgado/minibufexpl.vim
-" next (numerically)
-map <C-a>l :MBEbn<CR>
-" previous (numerically)
-map <C-a>h :MBEbp<CR>
-" next (historically)
-map <C-a>j :MBEbf<CR>
-" previous (historically)
-map <C-a>k :MBEbb<CR>
-
 " Easy split
-map \| :vsplit<CR>
-map _ :split<CR>
+noremap \| :vsplit<CR>
+noremap _ :split<CR>
 
+" Disable arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 
+" re-sync syntax highlighting
+nnoremap <leader><leader><CR> <Esc>:syntax sync fromstart<CR>
 
+" Remove trailing spaces on saving.
+autocmd BufWritePre <buffer> Despace
 
-"" COMMENTING in a few languages (highlight in visual mode and then type the
-" combination    ,#
-"
-" ,# perl # comments
-map ,# :s/^/# /<CR>
-map ;# :s/\(\s\+\)/\1# /<CR>
-" now remove them
-map ,,# :s/^# //<CR>
-map ;;# :s/\(\s\+\)# /\1/<CR>
-
-" deactivate search highlighting
-" https://stackoverflow.com/questions/99161/how-do-you-make-vim-unhighlight-what-you-searched-for
-set nohlsearch
-
-" <Esc>:nohlsearch<CR>
-"
-" ,% latex/matlab % comments
-map ,% :s/^/% /<CR><Esc>:nohlsearch<CR>
-"
-" ,/ C/C++/C#/Java // comments
-map ,/ :s/^/\/\/ /<CR><Esc>:nohlsearch<CR>
-"
-" ,< HTML comment
-map ,< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
-"
-" c++ java style comments
-map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
-
-" iunmap \c
-map ,,<CR> <Esc>:syn sync fromstart<CR>
 
 """ CUSTOM COMMANDS
-command Spell execute "set spell spelllang=en_gb"
-command Nospell execute "set nospell"
-command CB execute ":MBEbd"
+command! Spell execute "set spell spelllang=en_gb"
+command! Nospell execute "set nospell"
+command! CB execute ":MBEbd"
 
-command Despace execute "%s/\\s\\+$//g"
+command! Despace execute "%s/ \\+$//ge"
 """ INSERT DATE
 " from http://henry.precheur.org/scratchpad/
-function s:InsertISODate()
+function! s:InsertISODate()
     let timestamp = strftime('%Y-%m-%d')
     execute ":normal i" . timestamp
     echo 'New time: ' . timestamp
 endfunction
 
-function s:InsertISODatetime()
+function! s:InsertISODatetime()
     let timestamp = strftime('%Y-%m-%d %H:%M:%S')
     execute ":normal i" . timestamp
     echo 'New time: ' . timestamp
 endfunction
 
-command Day   call s:InsertISODate()
-command Now   call s:InsertISODatetime()
-
-""" MOVING AROUND
-" page down with <Space> (like in `Pine', `Less', and `More');
-" page up with - (like in `Lynx', `Mutt', `Pine'),
-" or <BkSpc> (like in `Netscape Navigator'): don't like this anymore.
-noremap <Space> <PageDown>
-" noremap <BS> <PageUp>
-noremap - <PageUp>
-
-" makes hjkl also work in insert mode with ctrl
-imap <C-h> <Left>
-imap <C-l> <Right>
-imap <C-j> <Up>
-imap <C-k> <Down>
-
-" to work nicely with tmux
-
-" map C 0i#[CTRL]-ESC j
-" The previous do not know exactly what it does
+command! Day   call s:InsertISODate()
+command! Now   call s:InsertISODatetime()
 
 
 " option to set the backspace to work (delete) in cygwin
 set backspace=2
+
+" Show syntax highlighting groups for word under cursor with Ctrl-Shift-p
+nmap <C-S-P> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+
+""" Graphical settings
+set guifont=Monaco:h14
