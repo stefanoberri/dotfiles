@@ -30,7 +30,7 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 " Activate and configure plugins
-source .plugins_vimrc
+source $HOME/.plugins_vimrc
 
 
 " Move across buffers
