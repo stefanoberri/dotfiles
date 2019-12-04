@@ -24,77 +24,14 @@
 
 
 
-" Vundle specific settings -----------------
+" settings required bu Vundle to manage plugins
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-"
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-" Syntastic (:help syntastic-commands)
-Plugin 'scrooloose/syntastic'
-" Nerdtree
-Plugin 'scrooloose/nerdTree'
-" vim-gitgutter
-Plugin 'airblade/vim-gitgutter'
-" More modern colorschemes
-Plugin 'jez/vim-colors-solarized'
-" Automate ctags generation
-if executable("ctags")
-  Plugin 'xolox/vim-misc'
-  Plugin 'xolox/vim-easytags'
-endif
-" tagbar to better navigate the code
-Plugin 'majutsushi/tagbar'
-" Taking notes
-Plugin 'xolox/vim-notes'
-" Black, a non compromising python code formatter. Only activate if
-" requirements are met
-if v:version > 700 && has('python3')
-  Plugin 'ambv/black'
-endif
-" fugitive.vim - git integration
-Plugin 'tpope/vim-fugitive'
-" Comment code
-Plugin 'tpope/vim-commentary'
-" Surround text with paretheses, quotes, tags and so on
-Plugin 'tpope/vim-surround'
-" The . command works with plugins too
-Plugin 'tpope/vim-repeat'
-" Intelligent substitutions
-Plugin 'tpope/vim-abolish'
-" Add the status line
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+" Activate and configure plugins
+source .plugins_vimrc
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-" filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just
-" :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to
-" auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-" To install from command line: vim +PluginInstall +qall
-" End of Vundle ------------------
-"
-" ==== PLUGIN SETTINGS =============
-"
-" == Black ==============
-let g:black_linelength=80
 
 " Move across buffers
 " next buffer
@@ -106,63 +43,6 @@ nnoremap <C-j> :bf<CR>
 " last buffer
 nnoremap <C-k> :blast<CR>
 
-" == EasyTags settings ==
-set tags=./tags;
-let g:easytags_dynamic_files = 1
-" == Tagbar settings  ==============
-nmap <F8> :TagbarToggle<CR>
-nmap <F9> :TagbarOpen j<CR>
-
-" == gitgutter settings ==
-nmap <F7> :GitGutterToggle<CR>
-
-" == Syntastic settings ==============
-"
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_pylint_args = "--disable=print-statement"
-" let g:syntastic_python_pylint_rcfile='/Users/sberri/.pylintrc'
-
-" Set Python checker with pylint. Must be installed in default python to enable
-" syntax checks
-let g:syntastic_python_checkers = ['pylint']
-" Do not activate syntax checking by default
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-nnoremap <leader>j :lnext<CR>
-nnoremap <leader>k :lprevious<CR>
-" Activate syntax checking with <Ctrl-w>e (need to write file to run the
-" linter. :SyntasticCheck strangely opens a window
-nnoremap <C-w>e :SyntasticToggleMode<CR>
-
-" == NERDTree settings ===============
-" Map F2 to toggle NERDTree. Resize vertical split with Ctrl-w =
-silent! nnoremap <F2> :NERDTreeToggle<CR><C-w>=
-" Map F3 to find file in NERDTree. Resize vertical split with Ctrl-w =
-silent! nnoremap <F3> :NERDTreeFind<CR><C-w>=
-" See dotfiles
-let NERDTreeShowHidden=1
-
-" == vim-notes settings ========
-let g:notes_directories = [$NOTEHOME]
-" Do not convert double quote to curly (directional)
-let g:notes_smart_quotes = 0
-
-" Airline settings
-" Install powerline fonts following instructions here
-" https://github.com/powerline/fonts
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='bubblegum'
-
-
-" == Settings ==
-
 " quick edit .vimrc
 nnoremap <leader>ev :split $MYVIMRC<cr>
 " quick source .vimrc
@@ -173,11 +53,8 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 set nu
 set relativenumber " disable with :set nornu
 
-" add ruler with information about cursor position
-set ruler
-
 " don't highlight after searches
-set hls!
+" set hls!
 " but highlight the first match
 set incsearch
 " deactivate search highlighting
@@ -275,43 +152,14 @@ nnoremap <leader><leader><CR> <Esc>:syntax sync fromstart<CR>
 " Remove trailing spaces on saving.
 autocmd BufWritePre <buffer> Despace
 
-
 """ CUSTOM COMMANDS
 command! Spell execute "set spell spelllang=en_gb"
 command! Nospell execute "set nospell"
-command! CB execute ":MBEbd"
 
 command! Despace execute "%s/ \\+$//ge"
-""" INSERT DATE
-" from http://henry.precheur.org/scratchpad/
-function! s:InsertISODate()
-    let timestamp = strftime('%Y-%m-%d')
-    execute ":normal i" . timestamp
-    echo 'New time: ' . timestamp
-endfunction
-
-function! s:InsertISODatetime()
-    let timestamp = strftime('%Y-%m-%d %H:%M:%S')
-    execute ":normal i" . timestamp
-    echo 'New time: ' . timestamp
-endfunction
-
-command! Day   call s:InsertISODate()
-command! Now   call s:InsertISODatetime()
-
 
 " option to set the backspace to work (delete) in cygwin
 set backspace=2
-
-" Show syntax highlighting groups for word under cursor with Ctrl-Shift-p
-nmap <C-S-P> :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
 
 """ Graphical settings
 set guifont=Monaco:h14

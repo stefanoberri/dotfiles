@@ -23,6 +23,7 @@ files2sync="
   .ctags
   .pylintrc
   .vim/notes.vim
+  .plugins_vimrc
   bin/tmuxStatus
   bin/gr
   bin/prettyJSON
