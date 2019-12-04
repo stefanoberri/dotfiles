@@ -154,6 +154,9 @@ let g:notes_directories = [$NOTEHOME]
 let g:notes_smart_quotes = 0
 
 " Airline settings
+" Install powerline fonts following instructions here
+" https://github.com/powerline/fonts
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='bubblegum'
 
