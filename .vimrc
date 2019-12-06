@@ -60,6 +60,13 @@ set incsearch
 " deactivate search highlighting
 set nohlsearch
 
+" Enable fuzzy search in active directory and below. Not using plugins yet. See
+" links below
+" https://www.youtube.com/watch?v=XA2WjJbmmoM&t=865s
+" http://www.akhatib.com/fuzzy-find-files-in-vim-without-a-plugin/
+set path+=**
+set wildmenu
+set wildignore+=**/.git/**,**/__pycache__/**,**/venv/**,**/node_modules/**,**/dist/**,**/build/**,*.o,*.pyc,*.swp
 
 " uses indents of 2 spaces. Keep these commands together as they should be
 " changed at once. See :help tabstop for suggestion of working combinations
