@@ -23,10 +23,10 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Syntastic (:help syntastic-commands). Allow live syntax checking
 Plugin 'scrooloose/syntastic'
-" settings 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" settings
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -73,12 +73,6 @@ Plugin 'majutsushi/tagbar'
 nnoremap <F8> :TagbarToggle<CR>
 nnoremap <F9> :TagbarOpen j<CR>
 
-" Taking notes
-Plugin 'xolox/vim-notes'
-" settings
-let g:notes_directories = [$NOTEHOME]
-" Do not convert double quote to curly (directional)
-let g:notes_smart_quotes = 0
 
 " Black, a non compromising python code formatter. Only activate if
 " requirements are met
@@ -110,8 +104,12 @@ Plugin 'vim-airline/vim-airline-themes'
 " Install powerline fonts following instructions here
 " https://github.com/powerline/fonts
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='bubblegum'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#syntastic#enabled = 0
+let g:airline#extensions#keymap#enabled = 0
+let g:airline#extensions#vista#enabled = 0
+let g:airline#extensions#whitespace#enabled = 0
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
