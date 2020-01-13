@@ -133,8 +133,6 @@ for f in `ls .vim/after/ftplugin/*.vim`; do
 
 done
 
-
-
 # Install Vundle (requires git)
 VUNDLE=$HOME/.vim/bundle/Vundle.vim
 # reactivate set e or the next command will stop the script if there is no git
