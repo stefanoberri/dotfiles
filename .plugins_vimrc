@@ -111,6 +111,10 @@ let g:airline#extensions#keymap#enabled = 0
 let g:airline#extensions#vista#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
 
+
+" VimWiki
+Plugin 'vimwiki/vimwiki'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
