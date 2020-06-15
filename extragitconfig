@@ -1,5 +1,0 @@
-# User and machine specific configuration for git
-# This file is not automatically deployed, but needs to be copied in the $HOME
-# directory and renamed with a trailing dot
-[user]
-	email = user@server.com

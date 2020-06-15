@@ -1,6 +1,6 @@
 [include]
     # PC/User specific configurations. Relative to location of $HOME/.gitconfig
-    path = .extragitconfig
+    path = .local_gitconfig
 
 [core]
 	editor = vim

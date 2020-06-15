@@ -1,0 +1,5 @@
+# Machine specific configuration for git
+# This file is automatically deployed, but changes to the target do not affect
+# the repository version
+[user]
+	email = user@server.com

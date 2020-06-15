@@ -33,7 +33,7 @@ else
 fi;
 
 # color clue about host
-# set hostColor to a color name in ~/.extrarc depending on hostname
+# set hostColor to a color name in ~/.local_bashrc depending on hostname
 if [ -n ${!hostColor} ]; then
   HC=${!hostColor}
 else
@@ -42,7 +42,7 @@ else
 fi
 
 # color clue about user
-# set userColor to a color name in ~/.extrarc
+# set userColor to a color name in ~/.local_bashrc
 if [ -n ${!userColor} ]; then
   UC=${!userColor}
 else
@@ -56,7 +56,7 @@ fi
 
 
 # color clue about filesystem (usually the physcal location)
-# set fsColor to a color name in ~/.extrarc
+# set fsColor to a color name in ~/.local_bashrc
 if [ -n ${!fsColor} ]; then
   color=${!fsColor}
 else

@@ -1,10 +1,14 @@
-<blockquote class="twitter-tweet" data-lang="en-gb"><p lang="en" dir="ltr">No *you* have less friends than dotfiles.</p>&mdash; I Am Devloper (@iamdevloper) <a href="https://twitter.com/iamdevloper/status/1055033406449426432?ref_src=twsrc%5Etfw">24 October 2018</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en-gb"><p lang="en" dir="ltr">No
+__you__ have less friends than dotfiles.</p>&mdash; I Am Devloper (@iamdevloper)
+<a
+href="https://twitter.com/iamdevloper/status/1055033406449426432?ref_src=twsrc%5Etfw">24
+October 2018</a></blockquote>
 
 # Set up working environments
 
 This repository contains dotfiles, other configurations as well as little
 scripts to automate the creation of a productive and coherent working
-environment **I like** across different \*nix machines. My preferences might
+environment __I like__ across different \*nix machines. My preferences might
 not suite everybody :)
 
 ## Deploy the configuration files
@@ -27,9 +31,9 @@ repository and that change can easily be tracked.
 ### Machine and user specific settings
 
 Some settings are machine specific or user specific and should not be kept in
-sync on git. Those files are named `extra*` and need to be manually __copied__
-to the home directory with a leading dot (i.e. `extrarc` renamed as
-`$HOME/.extrarc`), edited to reflect user or machine settings and not tracked.
+sync on git. Those files are named `.local_*` and will be __copied__
+rather than linked to the home directory. You can then optionally edit it to
+reflect user or machine settings.
 
 # Further reading
 
@@ -43,8 +47,8 @@ link](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html)
 	    |-> .profile # not currently present
 	    |-> .bashrc
 	           |-> /etc/bashrc # system wide settings
-	           |-> .extrarc # optional file not included for
-		   |            # system-specific settings
+	           |-> .local_bashrc # optional file not included for
+	           |                 # system-specific settings
 	           |-> .aliases
 	           |-> .bash_prompt
 	           |-> .functions

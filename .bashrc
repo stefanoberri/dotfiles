@@ -10,7 +10,7 @@ fi
 function sourceit(){ [ -r "$1" ] && [ -f "$1" ] && source "$1"; }
 
 # host specific settings
-sourceit $HOME/.extrarc
+sourceit $HOME/.local_bashrc
 # set aliases
 sourceit $HOME/.aliases
 # change the prompt text and color: some examples

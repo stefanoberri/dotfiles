@@ -1,17 +1,3 @@
-" NOTES for rarely used commands
-
-" :resize 60
-" :vertical resize 60
-" resize panes to specified hight/width (60)
-
-" if number has + or - sign (i.e. +12) it adds/subtract that to current size
-
-" Ctrl-w N+  Ctrl-w N-  Ctrl-w N>  Ctrl-w N<
-" increase horizontally, decrease horizontally, increase vertically, decrease
-" vertically the window N lines
-
-
-
 " settings required bu Vundle to manage plugins
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -20,6 +6,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " Activate and configure plugins
 source $HOME/.plugins_vimrc
 
+
+" Load local settings: anything that is specific to **this** machine setup
+source $HOME/.local_vimrc
 
 " Move across buffers
 " next buffer

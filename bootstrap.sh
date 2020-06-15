@@ -6,7 +6,7 @@ force=0
 
 
 # built in variables
-files2sync="
+files2link="
   .functions
   .name
   .bashrc
@@ -15,7 +15,6 @@ files2sync="
   .aliases
   .profile
   .inputrc
-  .extrarc
   .tmux.conf
   .tmuxStatus.sh
   .vimrc
@@ -31,6 +30,12 @@ files2sync="
   bin/notes
   .config/git/ignore
   "
+
+files2copy="
+  .local_bashrc
+  .local_vimrc
+  .local_gitconfig
+"
 
 function usage(){
   echo "Create symlinks in your home directory to configurations files in this
@@ -108,10 +113,19 @@ if [ ! -d $HOME/.config/git ]; then
   mkdir -p $HOME/.config/git
 fi
 
-for f in $files2sync; do
+for f in $files2link; do
   any_exists $f # set variable $exists
   if [ "$exists" == "0" -o "$force" == "1" ]; then
     create_symlinks $f
+  else
+    echo "File $HOME/$f already exists. Use --force to override"
+  fi
+done
+
+for f in $files2copy; do
+  any_exists $f # set variable $exists
+  if [ "$exists" == "0" -o "$force" == "1" ]; then
+    cp $PWD/$f $HOME/$f
   else
     echo "File $HOME/$f already exists. Use --force to override"
   fi
