@@ -115,6 +115,8 @@ let g:airline#extensions#whitespace#enabled = 0
 " VimWiki
 Plugin 'vimwiki/vimwiki'
 
+Plugin 'romainl/Apprentice'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
