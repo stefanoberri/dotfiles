@@ -8,6 +8,6 @@ docker rm $(docker ps -q -f 'status=exited')
 docker rmi -f $(docker images -q -a -f dangling=true)
 
 # remove orphaned volumes
-https://stackoverflow.com/questions/30604846/docker-error-no-space-left-on-device
+# https://stackoverflow.com/questions/30604846/docker-error-no-space-left-on-device
 docker volume rm $(docker volume ls -qf dangling=true)
 
