@@ -59,13 +59,15 @@ set autoindent
 " don't make it look like there are line breaks where there aren't:
 set nowrap
 
+" disable modeline
+set nomodeline
+
 " normally don't automatically format `text' as it is typed, i.e. only do this
 " with comments, at 79 characters:
 set formatoptions-=t
 set textwidth=79
 " to disable wrapping
 " set tw=0
-
 
 " highlight syntax
 syntax on
@@ -107,8 +109,13 @@ set nofoldenable
 
 " set a nice colorsheme for a dark background
 set background=dark
-colorscheme elflord
 
+if &diff
+    syntax off
+    colorscheme apprentice
+else
+    colorscheme elflord
+endif
 " for a bright background this would be better
 " colorscheme slate
 
