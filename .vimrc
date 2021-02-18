@@ -1,122 +1,8 @@
-" Move across buffers
-" next buffer
-nnoremap <C-l> :bn<CR>
-" previous buffer
-nnoremap <C-h> :bp<CR>
-" first buffer
-nnoremap <C-j> :bf<CR>
-" last buffer
-nnoremap <C-k> :blast<CR>
-
-" quick edit .vimrc
-nnoremap <leader>ev :split $MYVIMRC<cr>
-" quick source .vimrc
-nnoremap <leader>sv :source $MYVIMRC<cr>
-
-
-" add number and relative numbers on the left
-set nu
-set relativenumber " disable with :set nornu
-
-" don't highlight after searches
-" set hls!
-" but highlight the first match
-set incsearch
-" deactivate search highlighting
-set nohlsearch
-
-" Enable fuzzy search in active directory and below. Not using plugins yet. See
-" links below
-" https://www.youtube.com/watch?v=XA2WjJbmmoM&t=865s
-" http://www.akhatib.com/fuzzy-find-files-in-vim-without-a-plugin/
-set path+=**
-set wildmenu
-set wildignore+=**/.git/**,**/__pycache__/**,**/venv/**,**/node_modules/**,**/dist/**,**/build/**,*.o,*.pyc,*.swp
-
-" uses indents of 2 spaces. Keep these commands together as they should be
-" changed at once. See :help tabstop for suggestion of working combinations
-" tab are actually spaces (type Ctrl-V<Tab> to insert a real tab and use
-" command :retab to change all existing tab to the new style
-" to remove the tab conversion enter ':set noexpandtab'
-set shiftwidth=2 softtabstop=2 tabstop=2 expandtab
-
-set autoindent
-
-" don't make it look like there are line breaks where there aren't:
-set nowrap
-
-" disable modeline
-set nomodeline
-
-" normally don't automatically format `text' as it is typed, i.e. only do this
-" with comments, at 79 characters:
-set formatoptions-=t
-set textwidth=79
-" to disable wrapping
-" set tw=0
+""" Most configurations is in .vim/plugin/*.vim to keep it tidy
 
 " highlight syntax
 syntax on
 filetype on
-
-
-" set search case sensitive
-" set noignorecase
-" set search case insensitive untill a capital letter is used. still use \c
-" and \C for forcing case insesitive or case sensitive searches
-set smartcase
-" to put it back case sensitive type
-" set ignorecase
-
-" give special character
-set listchars=eol:$,tab:¬·,trail:␣,extends:>,precedes:<
-
-" uses syntax to perform folding (zc and zo to Close or Open folding
-" here for more details on folding
-" http://www.vim.org/htmldoc/fold.html#fold-commands
-"
-" TO DISABLE
-" set nofoldenable
-"
-" set foldmethod=syntax
-" if you indent correctly the following migh be more useful
-set foldmethod=indent
-" do not open files already folded
-set nofoldenable
-
-
-" set a nice colorsheme for a dark background
-set background=dark
-
-if &diff
-    syntax off
-    colorscheme apprentice
-else
-    colorscheme elflord
-endif
-" for a bright background this would be better
-" colorscheme slate
-
-" Activate syntax autocpmpletion (Ctrl-n)
-set omnifunc=syntaxcomplete#Complete
-
-" Allow hidden buffers
-" A hidden buffer is a buffer with some unsaved modifications and is not
-" displayed in a window.
-set hidden
-
-" Easy split
-noremap \| :vsplit<CR>
-noremap _ :split<CR>
-
-" Disable arrow keys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-
-" re-sync syntax highlighting
-nnoremap <leader><leader><CR> <Esc>:syntax sync fromstart<CR>
 
 """ Functions
 fun! TrimWhitespace()
@@ -143,20 +29,98 @@ autocmd  BufNewFile,BufRead *.nf set filetype=groovy
 autocmd  BufNewFile,BufRead *.config set filetype=groovy
 
 
-
-
 """ CUSTOM COMMANDS
 command! Spell execute "set spell spelllang=en_gb"
 command! Nospell execute "set nospell"
 
-" option to set the backspace to work (delete) in cygwin
-set backspace=2
 
-""" Graphical settings
-set guifont=Monaco:h14
+" Activate and confugure plugins
+" see :h vundle for more details or wiki for FAQ
+" To install from command line: vim +PluginInstall +qall
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+"
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" " Syntastic (:help syntastic-commands). Allow live syntax checking
+" Plugin 'scrooloose/syntastic'
+
+" Nerdtree. Browse files in navigation pane.
+Plugin 'scrooloose/nerdTree'
+" settings
+" Map F2 to toggle NERDTree. Resize vertical split with Ctrl-w =
+silent! nnoremap <F2> :NERDTreeToggle<CR><C-w>=
+let NERDTreeShowHidden=1 " See dotfiles
+
+" vim-gitgutter. Show git changes (+/-/~) on the side
+Plugin 'airblade/vim-gitgutter'
+nnoremap <F7> :GitGutterToggle<CR>
+
+" Automate ctags generation
+if executable("ctags")
+  Plugin 'xolox/vim-misc'
+  Plugin 'xolox/vim-easytags'
+  set tags=./tags;
+  let g:easytags_dynamic_files = 1
+endif
+
+" " Tagbar to better navigate the code in a side pane
+" Plugin 'majutsushi/tagbar'
+
+" Black, a non compromising python code formatter. Only activate if
+" requirements are met
+if v:version > 700 && has('python3') && executable('black')
+  Plugin 'ambv/black'
+endif
+
+" fugitive.vim - git integration
+Plugin 'tpope/vim-fugitive'
+
+" Comment code
+Plugin 'tpope/vim-commentary'
+
+" Surround text with paretheses, quotes, tags and so on
+Plugin 'tpope/vim-surround'
+
+" The . command works with plugins too
+Plugin 'tpope/vim-repeat'
+
+" Intelligent substitutions
+Plugin 'tpope/vim-abolish'
+
+" Add the status line
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+" Install powerline fonts following instructions here
+" https://github.com/powerline/fonts
+let g:airline_powerline_fonts = 1
+let g:airline_theme='bubblegum'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#syntastic#enabled = 0
+let g:airline#extensions#keymap#enabled = 0
+let g:airline#extensions#vista#enabled = 0
+let g:airline#extensions#whitespace#enabled = 0
 
 
-" Actrivate and confugure plugins
-" Given its location, this command should not be required, but it is.
-" Needs to investigate why
-runtime! plugin/**/*.vim
+" VimWiki
+Plugin 'vimwiki/vimwiki'
+
+Plugin 'romainl/Apprentice'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+" filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+filetype plugin on
+" End of Vundle ------------------
