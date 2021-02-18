@@ -80,7 +80,7 @@ nnoremap <F7> :GitGutterToggle<CR>
 
 " Black, a non compromising python code formatter. Only activate if
 " requirements are met
-if v:version > 700 && has('python3')
+if v:version > 700 && has('python3') && executable('black')
   Plugin 'ambv/black'
   " settings
   " let g:black_linelength=88
