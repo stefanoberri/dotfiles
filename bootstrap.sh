@@ -21,8 +21,7 @@ files2link="
   .gitconfig
   .ctags
   .pylintrc
-  .vim/notes.vim
-  .plugins_vimrc
+  .vim/plugin
   bin/tmuxStatus
   bin/gr
   bin/prettyJSON
@@ -82,7 +81,7 @@ function parse_args(){
 function any_exists(){
   exists=0
   for f in "$@"; do
-    if [ -f $HOME/$f ]; then
+    if [ -e $HOME/$f ]; then
       exists=1
     fi
   done
