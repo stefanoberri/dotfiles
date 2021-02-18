@@ -21,28 +21,28 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Syntastic (:help syntastic-commands). Allow live syntax checking
-Plugin 'scrooloose/syntastic'
-" settings
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_pylint_args = "--disable=print-statement"
-" let g:syntastic_python_pylint_rcfile='/Users/sberri/.pylintrc'
-" Set Python checker with pylint. Must be installed in default python to enable
-" syntax checks
-let g:syntastic_python_checkers = ['pylint']
-" Do not activate syntax checking by default
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-nnoremap <leader>j :lnext<CR>
-nnoremap <leader>k :lprevious<CR>
-" Activate syntax checking with <Ctrl-w>e (need to write file to run the
-" linter. :SyntasticCheck strangely opens a window
-nnoremap <C-w>e :SyntasticToggleMode<CR>
+" " Syntastic (:help syntastic-commands). Allow live syntax checking
+" Plugin 'scrooloose/syntastic'
+" " settings
+" " set statusline+=%#warningmsg#
+" " set statusline+=%{SyntasticStatuslineFlag()}
+" " set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_python_pylint_args = "--disable=print-statement"
+" " let g:syntastic_python_pylint_rcfile='/Users/sberri/.pylintrc'
+" " Set Python checker with pylint. Must be installed in default python to enable
+" " syntax checks
+" let g:syntastic_python_checkers = ['pylint']
+" " Do not activate syntax checking by default
+" let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+" nnoremap <leader>j :lnext<CR>
+" nnoremap <leader>k :lprevious<CR>
+" " Activate syntax checking with <Ctrl-w>e (need to write file to run the
+" " linter. :SyntasticCheck strangely opens a window
+" nnoremap <C-w>e :SyntasticToggleMode<CR>
 
 " Nerdtree. Browse files in navigation pane.
 Plugin 'scrooloose/nerdTree'
@@ -58,20 +58,20 @@ Plugin 'airblade/vim-gitgutter'
 " gitgutter settings
 nnoremap <F7> :GitGutterToggle<CR>
 
-" Automate ctags generation
-if executable("ctags")
-  Plugin 'xolox/vim-misc'
-  Plugin 'xolox/vim-easytags'
-  " == EasyTags settings ==
-  set tags=./tags;
-  let g:easytags_dynamic_files = 1
-endif
+" " Automate ctags generation
+" if executable("ctags")
+"   Plugin 'xolox/vim-misc'
+"   Plugin 'xolox/vim-easytags'
+"   " == EasyTags settings ==
+"   set tags=./tags;
+"   let g:easytags_dynamic_files = 1
+" endif
 
-" Tagbar to better navigate the code in a side pane
-Plugin 'majutsushi/tagbar'
-" == Tagbar settings  ==============
-nnoremap <F8> :TagbarToggle<CR>
-nnoremap <F9> :TagbarOpen j<CR>
+" " Tagbar to better navigate the code in a side pane
+" Plugin 'majutsushi/tagbar'
+" " == Tagbar settings  ==============
+" nnoremap <F8> :TagbarToggle<CR>
+" nnoremap <F9> :TagbarOpen j<CR>
 
 
 " Black, a non compromising python code formatter. Only activate if
@@ -79,7 +79,7 @@ nnoremap <F9> :TagbarOpen j<CR>
 if v:version > 700 && has('python3')
   Plugin 'ambv/black'
   " settings
-  let g:black_linelength=80
+  " let g:black_linelength=88
 endif
 
 " fugitive.vim - git integration
