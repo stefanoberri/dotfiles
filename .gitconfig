@@ -4,6 +4,7 @@
 
 [core]
 	editor = vim
+  excludesfile = ~/.global_gitignore
 
 [diff]
 	tool = vimdiff

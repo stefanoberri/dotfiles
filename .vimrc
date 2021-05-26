@@ -70,8 +70,9 @@ nnoremap <F7> :GitGutterToggle<CR>
 if executable("ctags")
   Plugin 'xolox/vim-misc'
   Plugin 'xolox/vim-easytags'
-  set tags=./tags;
-  let g:easytags_dynamic_files = 1
+  set tags=./.sberri_tags;
+  " let g:easytags_dynamic_files = 2
+  let g:easytags_events = ['BufWritePost']
 endif
 
 " " Tagbar to better navigate the code in a side pane

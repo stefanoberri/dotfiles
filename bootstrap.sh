@@ -19,6 +19,7 @@ files2link="
   .tmuxStatus.sh
   .vimrc
   .gitconfig
+  .global_gitignore
   .ctags
   .pylintrc
   .vim/plugin
