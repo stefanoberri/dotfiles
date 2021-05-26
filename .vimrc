@@ -84,6 +84,13 @@ if v:version > 700 && has('python3') && executable('black')
   Plugin 'ambv/black'
 endif
 
+" iSort to sort import in Python. Only activate if
+" requirements are met
+if v:version > 700 && has('python3') && executable('isort')
+  Plugin 'fisadev/vim-isort'
+endif
+
+
 " fugitive.vim - git integration
 Plugin 'tpope/vim-fugitive'
 

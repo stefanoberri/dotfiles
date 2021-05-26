@@ -15,6 +15,10 @@ nnoremap <leader>ev :split $MYVIMRC<cr>
 " quick source .vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+" code quality - Python. iSOrt and Black
+nnoremap <leader>q :Isort <cr>:Black <cr>
+
+
 " Easy split
 noremap \| :vsplit<CR>
 noremap _ :split<CR>
