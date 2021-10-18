@@ -4,7 +4,6 @@
 
 [core]
 	editor = vim
-	excludesfile = $HOME/.local_gitignore
 
 [diff]
 	tool = vimdiff
@@ -23,7 +22,7 @@
     br = branch
 
     # pretty git log
-    plog = !git log --pretty=format:\"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\" --decorate --graph
+    plog = !git log --pretty=format:\"%C(yellow)%h%C(red)%d%Creset - %s - %Cblue[%cn]\" --decorate --graph
 
     # list files which have changed since REVIEW_BASE
     # (REVIEW_BASE defaults to 'master' in bashrc)
