@@ -55,23 +55,44 @@ Plugin 'VundleVim/Vundle.vim'
 " " Syntastic (:help syntastic-commands). Allow live syntax checking
 " Plugin 'scrooloose/syntastic'
 
-" Nerdtree. Browse files in navigation pane.
-Plugin 'scrooloose/nerdTree'
-" settings
-" Map F2 to toggle NERDTree. Resize vertical split with Ctrl-w =
-silent! nnoremap <F2> :NERDTreeToggle<CR><C-w>=
-let NERDTreeShowHidden=1 " See dotfiles
+" switchboard for plugins
+let enable_abolish=0
+let enable_apprentice=1
+let enable_black=1
+let enable_comment_code=1
+let enable_ctags=1
+let enable_fugitive=1
+let enable_gitgutter=1
+let enable_isort=1
+let enable_nerdtree=1
+let enable_repeat=1
+let enable_status_line=1
+let enable_surround=1
+let enable_vimwiky=1
 
-" vim-gitgutter. Show git changes (+/-/~) on the side
-Plugin 'airblade/vim-gitgutter'
-nnoremap <F7> :GitGutterToggle<CR>
+
+
+if enable_nerdtree
+  " Nerdtree. Browse files in navigation pane.
+  Plugin 'scrooloose/nerdTree'
+  " settings
+  " Map F2 to toggle NERDTree. Resize vertical split with Ctrl-w =
+  silent! nnoremap <F2> :NERDTreeToggle<CR><C-w>=
+  let NERDTreeShowHidden=1 " See dotfiles
+endif
+
+if enable_gitgutter
+  " vim-gitgutter. Show git changes (+/-/~) on the side
+  Plugin 'airblade/vim-gitgutter'
+  nnoremap <F7> :GitGutterToggle<CR>
+endif
 
 " Automate ctags generation
-if executable("ctags")
+if enable_ctags && executable("ctags")
   Plugin 'xolox/vim-misc'
   Plugin 'xolox/vim-easytags'
   set tags=./.sberri_tags;
-  " let g:easytags_dynamic_files = 2
+  let g:easytags_dynamic_files = 2
   let g:easytags_events = ['BufWritePost']
 endif
 
@@ -80,50 +101,65 @@ endif
 
 " Black, a non compromising python code formatter. Only activate if
 " requirements are met
-if v:version > 700 && has('python3') && executable('black')
+if enable_black && v:version > 700 && has('python3') && executable('black')
   Plugin 'ambv/black'
 endif
 
 " iSort to sort import in Python. Only activate if
 " requirements are met
-if v:version > 700 && has('python3') && executable('isort')
+if enable_isort && v:version > 700 && has('python3') && executable('isort')
   Plugin 'fisadev/vim-isort'
 endif
 
-
-" fugitive.vim - git integration
-Plugin 'tpope/vim-fugitive'
-
-" Comment code
-Plugin 'tpope/vim-commentary'
-
-" Surround text with paretheses, quotes, tags and so on
-Plugin 'tpope/vim-surround'
-
-" The . command works with plugins too
-Plugin 'tpope/vim-repeat'
-
-" Intelligent substitutions
-Plugin 'tpope/vim-abolish'
-
-" Add the status line
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-" Install powerline fonts following instructions here
-" https://github.com/powerline/fonts
-let g:airline_powerline_fonts = 1
-let g:airline_theme='bubblegum'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#syntastic#enabled = 0
-let g:airline#extensions#keymap#enabled = 0
-let g:airline#extensions#vista#enabled = 0
-let g:airline#extensions#whitespace#enabled = 0
+if enable_fugitive
+  " fugitive.vim - git integration
+  Plugin 'tpope/vim-fugitive'
+endif
 
 
-" VimWiki
-Plugin 'vimwiki/vimwiki'
+if enable_comment_code
+  " Comment code
+  Plugin 'tpope/vim-commentary'
+endif
 
-Plugin 'romainl/Apprentice'
+if enable_surround
+  " Surround text with paretheses, quotes, tags and so on
+  Plugin 'tpope/vim-surround'
+endif
+
+if enable_repeat
+  " The . command works with plugins too
+  Plugin 'tpope/vim-repeat'
+endif
+
+if enable_abolish
+  " Intelligent substitutions
+  Plugin 'tpope/vim-abolish'
+endif
+
+if enable_status_line
+  " Add the status line
+  Plugin 'vim-airline/vim-airline'
+  Plugin 'vim-airline/vim-airline-themes'
+  " Install powerline fonts following instructions here
+  " https://github.com/powerline/fonts
+  let g:airline_powerline_fonts = 1
+  let g:airline_theme='bubblegum'
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#syntastic#enabled = 0
+  let g:airline#extensions#keymap#enabled = 0
+  let g:airline#extensions#vista#enabled = 0
+  let g:airline#extensions#whitespace#enabled = 0
+endif
+
+if enable_vimwiky
+  " VimWiki
+  Plugin 'vimwiki/vimwiki'
+endif
+
+if enable_apprentice
+  Plugin 'romainl/Apprentice'
+endif
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

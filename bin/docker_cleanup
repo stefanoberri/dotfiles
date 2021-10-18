@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# On a mac, images are saved in ~/Library/Containers/com.docker.docker/
+
 # Free space used by docker removing exited containers
 docker rm $(docker ps -q -f 'status=exited')
 
