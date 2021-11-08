@@ -15,15 +15,21 @@ nnoremap <leader>ev :split $MYVIMRC<cr>
 " quick source .vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" code quality - Python. iSOrt and Black
-nnoremap <leader>q :Isort <cr>:Black <cr>
+function Quality()
+let save_view = winsaveview()
+  Isort
+  Black
+call winrestview(save_view) " return to previous view
+endfunction
+" code quality - Python. iSort and Black
+nnoremap <leader>q :call Quality() <cr>
 
 
 " Easy split
 noremap \| :vsplit<CR>
 noremap _ :split<CR>
 
-" Disable arrow keys
+" Disable arrow keys in normal mode
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>

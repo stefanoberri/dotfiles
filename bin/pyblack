@@ -1,0 +1,5 @@
+#!/bin/bash
+# Apply iSort and black to files that have not been deleted but differ from TARGET_BRANCH
+TARGET_BRANCH=$1
+git diff $TARGET_BRANCH --name-only --diff-filter=d | grep .py$ | xargs isort
+git diff $TARGET_BRANCH --name-only --diff-filter=d | grep .py$ | xargs black
