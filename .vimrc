@@ -1,5 +1,13 @@
 """ Most configurations is in .vim/plugin/*.vim to keep it tidy
 
+
+" look for last search in files under git
+nnoremap <F4> :vimgrep //g `git ls-files` <Bar> cw<CR>
+" look for last search in files under git
+" nnoremap <F5> :execute " vimgrep /" . expand("<cword>") . "/g `git ls-files`" <Bar> cw
+
+
+
 " highlight syntax
 syntax on
 filetype on
@@ -66,6 +74,7 @@ let enable_gitgutter=1
 let enable_isort=1
 let enable_nerdtree=1
 let enable_repeat=1
+let enable_unimpaired=1
 let enable_status_line=1
 let enable_surround=1
 let enable_vimwiky=1
@@ -132,6 +141,10 @@ if enable_repeat
   Plugin 'tpope/vim-repeat'
 endif
 
+if enable_unimpaired
+  " Consistent way to cycle
+  Plugin 'tpope/vim-unimpaired'
+endif
 if enable_abolish
   " Intelligent substitutions
   Plugin 'tpope/vim-abolish'

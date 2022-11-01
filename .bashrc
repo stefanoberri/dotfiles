@@ -24,6 +24,7 @@ sourceit $HOME/.git-completion.bash
 # User specific environment and startup programs
 export PATH="$HOME/bin:$PATH";
 export EDITOR=vim
+export PYTHONDONTWRITEBYTECODE=1
 # A variable used by some git aliases
 export REVIEW_BASE=develop
 
