@@ -174,6 +174,8 @@ if enable_apprentice
   Plugin 'romainl/Apprentice'
 endif
 
+Plugin 'morhetz/gruvbox'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 

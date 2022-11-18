@@ -58,12 +58,14 @@ set nofoldenable
 " for a bright background this would be better
 " colorscheme slate
 set background=dark
+" The background color is the same as the terminal
+autocmd ColorScheme * highlight! Normal ctermbg=NONE guibg=NONE
 
 if &diff
     syntax off
     colorscheme apprentice
 else
-    colorscheme elflord
+    colorscheme torte
 endif
 
 " Activate syntax autocpmpletion (Ctrl-n)
