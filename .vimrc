@@ -118,6 +118,7 @@ endif
 " requirements are met
 if enable_isort && v:version > 700 && has('python3') && executable('isort')
   Plugin 'fisadev/vim-isort'
+  let g:vim_isort_python_version = 'python3'
 endif
 
 if enable_fugitive
