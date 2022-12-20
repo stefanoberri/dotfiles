@@ -7,28 +7,29 @@ force=0
 
 # built in variables
 files2link="
-  .functions
-  .name
-  .bashrc
+  .aliases
   .bash_profile
   .bash_prompt
-  .aliases
-  .profile
-  .inputrc
-  .tmux.conf
-  .tmuxStatus.sh
-  .vimrc
+  .bashrc
+  .config/git/ignore
+  .ctags
+  .functions
   .gitconfig
   .global_gitignore
-  .ctags
+  .inputrc
+  .name
+  .profile
   .pylintrc
+  .tmux.conf
+  .tmuxStatus.sh
   .vim/plugin
-  bin/tmuxStatus
-  bin/gr
-  bin/prettyJSON
+  .vimrc
   bin/docker_cleanup
+  bin/gr
   bin/notes
-  .config/git/ignore
+  bin/prettyJSON
+  bin/pyblack
+  bin/tmuxStatus
   "
 
 files2copy="
