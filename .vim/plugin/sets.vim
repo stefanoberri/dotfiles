@@ -39,7 +39,8 @@ set smartcase
 " to put it back case sensitive type :set ignorecase
 
 " give special character
-set listchars=eol:$,tab:¬·,trail:␣,extends:>,precedes:<
+" set listchars=eol:$,tab:¬·,trail:␣,extends:>,precedes:<
+" set listchars=eol:$,tab:_
 
 " uses syntax to perform folding (zc and zo to Close or Open folding
 " here for more details on folding
