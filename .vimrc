@@ -111,7 +111,8 @@ endif
 " Black, a non compromising python code formatter. Only activate if
 " requirements are met
 if enable_black && v:version > 700 && has('python3') && executable('black')
-  Plugin 'ambv/black'
+  " Plugin 'ambv/black'
+  Plugin 'psf/black'
 endif
 
 " iSort to sort import in Python. Only activate if
