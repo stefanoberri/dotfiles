@@ -105,6 +105,13 @@ if enable_ctags && executable("ctags")
   let g:easytags_events = ['BufWritePost']
 endif
 
+" Mason nvim
+Plugin 'williamboman/mason.nvim'
+
+" Formatter
+Plugin 'mhartington/formatter.nvim'
+
+
 " " Tagbar to better navigate the code in a side pane
 " Plugin 'majutsushi/tagbar'
 
