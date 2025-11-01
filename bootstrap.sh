@@ -12,6 +12,7 @@ files2link="
   .bash_prompt
   .bashrc
   .config/git/ignore
+  .config/nvim/init.vim
   .ctags
   .functions
   .gitconfig
@@ -100,6 +101,8 @@ function create_symlinks(){
       fi
       echo "Creating link from $TARGET to $SOURCE ..."
       ln -s $SOURCE $TARGET
+    else
+      echo "Source $SOURCE does not exist"
     fi
   done
 }
@@ -110,8 +113,14 @@ parse_args "$@"
 if [ ! -d $HOME/bin ]; then
   mkdir $HOME/bin
 fi
+if [ ! -d $HOME/.vim ]; then
+  mkdir $HOME/.vim
+fi
+if [ ! -d $HOME/.config ]; then
+  mkdir $HOME/.config
+fi
 if [ ! -d $HOME/.config/git ]; then
-  mkdir -p $HOME/.config/git
+  mkdir $HOME/.config/git
 fi
 
 for f in $files2link; do

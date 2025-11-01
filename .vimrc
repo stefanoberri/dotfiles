@@ -10,7 +10,7 @@ nnoremap <F4> :vimgrep //g `git ls-files` <Bar> cw<CR>
 
 " highlight syntax
 syntax on
-filetype on
+filetype off
 
 """ Functions
 fun! TrimWhitespace()
@@ -188,7 +188,7 @@ Plugin 'morhetz/gruvbox'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
-" filetype plugin indent on    " required
+filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-filetype plugin on
+" filetype plugin indent on
 " End of Vundle ------------------
