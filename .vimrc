@@ -111,6 +111,9 @@ Plugin 'williamboman/mason.nvim'
 " Formatter
 Plugin 'mhartington/formatter.nvim'
 
+" Dispatch
+Plugin 'tpope/vim-dispatch'
+
 
 " " Tagbar to better navigate the code in a side pane
 " Plugin 'majutsushi/tagbar'

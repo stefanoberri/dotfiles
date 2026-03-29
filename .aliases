@@ -19,6 +19,7 @@ alias ls="ls ${colorflag}"
 alias l="ls -lrt"
 alias la="ls -aF"
 alias tree="tree -C"
+alias fp="realpath"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
