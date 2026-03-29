@@ -1,6 +1,10 @@
 #!/bin/bash
 
+# NOTE: Maybe replace this script using chezmoi
+# https://www.chezmoi.io/
+
 set -e
+
 # defaults
 force=0
 
@@ -122,6 +126,9 @@ fi
 if [ ! -d $HOME/.config/git ]; then
   mkdir $HOME/.config/git
 fi
+if [ ! -d $HOME/.config/nvim ]; then
+  mkdir $HOME/.config/nvim
+fi
 
 for f in $files2link; do
   any_exists $f # set variable $exists
@@ -188,3 +195,6 @@ git config --global --replace-all difftool.prompt false
 ## Get git autocompletion script
 wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash \
   --output-document $HOME/.git-completion.bash
+
+echo ""
+echo "Successfully completed bootstrap"
