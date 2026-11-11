@@ -77,16 +77,12 @@ staged=${darkgreen}
 SHOW_CONDA_ENV=1
 
 # git info can be switched on setting variable $SHOW_GIT to 1
-# might slow down the creation of the prompt
+# Read the branch and file counts with one Git command per prompt.
 SHOW_GIT=1
 GIT_INFO=""
 if [[ $SHOW_GIT == 1 ]]; then
   GIT_INFO+="-(\[${color}\]"; # set starting color
-  GIT_INFO+="\[${repo}\]\$(__git_ps1)"; # white git branch
-  GIT_INFO+="\[${divs}\]:";
-  GIT_INFO+="\[${staged}\]\$(__git_staged)"; # num of staged files
-  GIT_INFO+="\[${divs}\],";
-  GIT_INFO+="\[${modified}\]\$(__git_modified)"; # num of modified files
+  GIT_INFO+="\$(__git_prompt)";
   GIT_INFO+="\[${divs}\])";
 fi
 
